@@ -1,0 +1,159 @@
+{
+  "scope": "Actual FK conversion and short headless shutdown check; not a tracking policy or RL gate",
+  "shutdown_probe": "25-frame real IsaacSim run exited with code 0 after repair",
+  "atomic_save_checks": "finite/full-length output, reopened exact equality, invalid-output rejection without replacing existing file",
+  "motion_files": [
+    {
+      "motion_id": "walk1_subject1",
+      "path": "data/reproduction/motions_25hz/walk1_subject1.npz",
+      "fps": 25,
+      "frames": 6533,
+      "shapes": {
+        "joint_pos": [
+          6533,
+          29
+        ],
+        "joint_vel": [
+          6533,
+          29
+        ],
+        "body_pos_w": [
+          6533,
+          30,
+          3
+        ],
+        "body_quat_w": [
+          6533,
+          30,
+          4
+        ],
+        "body_lin_vel_w": [
+          6533,
+          30,
+          3
+        ],
+        "body_ang_vel_w": [
+          6533,
+          30,
+          3
+        ]
+      },
+      "bytes": 11708930,
+      "sha256": "575f8a84f2a8cd4f1389f376d9d0941321f3be58f17413e53fd5c85b5d06d648"
+    },
+    {
+      "motion_id": "walk2_subject1",
+      "path": "data/reproduction/motions_25hz/walk2_subject1.npz",
+      "fps": 25,
+      "frames": 5955,
+      "shapes": {
+        "joint_pos": [
+          5955,
+          29
+        ],
+        "joint_vel": [
+          5955,
+          29
+        ],
+        "body_pos_w": [
+          5955,
+          30,
+          3
+        ],
+        "body_quat_w": [
+          5955,
+          30,
+          4
+        ],
+        "body_lin_vel_w": [
+          5955,
+          30,
+          3
+        ],
+        "body_ang_vel_w": [
+          5955,
+          30,
+          3
+        ]
+      },
+      "bytes": 10673154,
+      "sha256": "ef17485a7b254b8da95dadbd3018af4e43a189b9869a2078bb58aa242bf9659f"
+    },
+    {
+      "motion_id": "run1_subject2",
+      "path": "data/reproduction/motions_25hz/run1_subject2.npz",
+      "fps": 25,
+      "frames": 5945,
+      "shapes": {
+        "joint_pos": [
+          5945,
+          29
+        ],
+        "joint_vel": [
+          5945,
+          29
+        ],
+        "body_pos_w": [
+          5945,
+          30,
+          3
+        ],
+        "body_quat_w": [
+          5945,
+          30,
+          4
+        ],
+        "body_lin_vel_w": [
+          5945,
+          30,
+          3
+        ],
+        "body_ang_vel_w": [
+          5945,
+          30,
+          3
+        ]
+      },
+      "bytes": 10655234,
+      "sha256": "a3bf80d8e40116617772fee457fc5fb377c886d16447521ca81e7c5ae146e597"
+    },
+    {
+      "motion_id": "dance1_subject1",
+      "path": "data/reproduction/motions_25hz/dance1_subject1.npz",
+      "fps": 25,
+      "frames": 3287,
+      "shapes": {
+        "joint_pos": [
+          3287,
+          29
+        ],
+        "joint_vel": [
+          3287,
+          29
+        ],
+        "body_pos_w": [
+          3287,
+          30,
+          3
+        ],
+        "body_quat_w": [
+          3287,
+          30,
+          4
+        ],
+        "body_lin_vel_w": [
+          3287,
+          30,
+          3
+        ],
+        "body_ang_vel_w": [
+          3287,
+          30,
+          3
+        ]
+      },
+      "bytes": 5892098,
+      "sha256": "7388f038aee8b27c2a183f10fbf34103afd369b0b5a3857705605290761222b8"
+    }
+  ]
+}

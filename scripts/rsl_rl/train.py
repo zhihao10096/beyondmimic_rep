@@ -24,7 +24,9 @@ parser.add_argument("--num_envs", type=int, default=None, help="Number of enviro
 parser.add_argument("--task", type=str, default=None, help="Name of the task.")
 parser.add_argument("--seed", type=int, default=None, help="Seed used for the environment")
 parser.add_argument("--max_iterations", type=int, default=None, help="RL Policy training iterations.")
-parser.add_argument("--registry_name", type=str, required=True, help="The name of the wand registry.")
+motion_source = parser.add_mutually_exclusive_group(required=True)
+motion_source.add_argument("--registry_name", type=str, help="The name of the wand registry.")
+motion_source.add_argument("--motion_file", type=str, help="Path to a local motion NPZ; no registry access required.")
 
 # append RSL-RL cli arguments
 cli_args.add_rsl_rl_args(parser)
@@ -46,6 +48,7 @@ simulation_app = app_launcher.app
 """Rest everything follows."""
 
 import gymnasium as gym
+import numpy as np
 import os
 import torch
 from datetime import datetime
@@ -87,18 +90,33 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     # note: certain randomizations occur in the environment initialization so we set the seed here
     env_cfg.seed = agent_cfg.seed
     env_cfg.sim.device = args_cli.device if args_cli.device is not None else env_cfg.sim.device
+    if args_cli.device is not None:
+        agent_cfg.device = args_cli.device
 
-    # load the motion file from the wandb registry
+    # Resolve either a local motion or the existing W&B registry source.
     registry_name = args_cli.registry_name
-    if ":" not in registry_name:  # Check if the registry name includes alias, if not, append ":latest"
-        registry_name += ":latest"
     import pathlib
 
-    import wandb
+    if args_cli.motion_file is not None:
+        motion_path = pathlib.Path(args_cli.motion_file).expanduser().resolve(strict=True)
+        if not motion_path.is_file():
+            raise ValueError(f"Motion path is not a file: {motion_path}")
+        env_cfg.commands.motion.motion_file = str(motion_path)
+    else:
+        if ":" not in registry_name:
+            registry_name += ":latest"
+        import wandb
 
-    api = wandb.Api()
-    artifact = api.artifact(registry_name)
-    env_cfg.commands.motion.motion_file = str(pathlib.Path(artifact.download()) / "motion.npz")
+        api = wandb.Api()
+        artifact = api.artifact(registry_name)
+        env_cfg.commands.motion.motion_file = str(pathlib.Path(artifact.download()) / "motion.npz")
+
+    # MotionCommand advances one frame per control step; it does not resample.
+    with np.load(env_cfg.commands.motion.motion_file, allow_pickle=False) as motion:
+        fps = np.asarray(motion["fps"]).reshape(-1)
+        expected_fps = 1.0 / (env_cfg.sim.dt * env_cfg.decimation)
+        if fps.size != 1 or not np.isclose(fps[0], expected_fps):
+            raise ValueError(f"Motion fps {fps.tolist()} must match task control frequency {expected_fps} Hz.")
 
     # specify directory for logging experiments
     log_root_path = os.path.join("logs", "rsl_rl", agent_cfg.experiment_name)

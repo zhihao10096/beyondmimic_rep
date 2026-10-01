@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "checks": [
+    "train CLI requires exactly one motion source; local and registry accepted",
+    "actual train resolver accepts local 25Hz, rejects 50Hz, preserves W&B latest alias",
+    "converter accepts local no-upload mode and legacy upload; missing upload name rejected",
+    "explicit playback motion override applies after both checkpoint source branches",
+    "train.sh fully commented; original and uncommented Bash syntax passed",
+    "all three modified Python scripts compile"
+  ],
+  "scope": "CLI / source selection / frequency guard / syntax only; AppLauncher stubbed, no IsaacSim or training run"
+}

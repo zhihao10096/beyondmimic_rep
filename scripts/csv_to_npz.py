@@ -4,7 +4,7 @@
 
     # Usage
     python csv_to_npz.py --input_file LAFAN/dance1_subject2.csv --input_fps 30 --frame_range 122 722 \
-    --output_file ./motions/dance1_subject2.npz --output_fps 50
+    --output_file ./motions/dance1_subject2.npz --output_fps 25 --no_upload --exit_after_save
 """
 
 """Launch Isaac Sim Simulator first."""
@@ -28,19 +28,29 @@ parser.add_argument(
         " loaded."
     ),
 )
-parser.add_argument("--output_name", type=str, required=True, help="The name of the motion npz file.")
+parser.add_argument("--output_name", type=str, help="W&B motion collection name; required unless --no_upload.")
+parser.add_argument("--output_file", type=str, default="/tmp/motion.npz", help="Local output NPZ path.")
+parser.add_argument("--no_upload", action="store_true", help="Save locally without uploading to W&B.")
+parser.add_argument("--exit_after_save", action="store_true", help="Exit after saving one complete motion pass.")
 parser.add_argument("--output_fps", type=int, default=50, help="The fps of the output motion.")
 
 # append AppLauncher cli args
 AppLauncher.add_app_launcher_args(parser)
 # parse the arguments
 args_cli = parser.parse_args()
+if not args_cli.no_upload and not args_cli.output_name:
+    parser.error("--output_name is required unless --no_upload is set")
 
 # launch omniverse app
 app_launcher = AppLauncher(args_cli)
 simulation_app = app_launcher.app
 
 """Rest everything follows."""
+
+import os
+import sys
+from pathlib import Path
+from tempfile import NamedTemporaryFile
 
 import torch
 
@@ -56,6 +66,32 @@ from isaaclab.utils.math import axis_angle_from_quat, quat_conjugate, quat_mul, 
 # Pre-defined configs
 ##
 from whole_body_tracking.robots.g1 import G1_CYLINDER_CFG
+
+
+def save_local_motion(output_path: Path, log: dict, expected_frames: int) -> None:
+    """Validate and atomically save the complete, synchronous FK output."""
+    keys = ("joint_pos", "joint_vel", "body_pos_w", "body_quat_w", "body_lin_vel_w", "body_ang_vel_w")
+    for key in keys:
+        value = log[key]
+        if value.shape[0] != expected_frames or not np.isfinite(value).all():
+            raise ValueError(f"Incomplete or non-finite motion field: {key}")
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    temp_path = None
+    try:
+        with NamedTemporaryFile(dir=output_path.parent, prefix=f".{output_path.name}.", suffix=".tmp", delete=False) as f:
+            temp_path = Path(f.name)
+            np.savez(f, **log)
+            f.flush()
+            os.fsync(f.fileno())
+        # Reopen after closing the ZIP to detect incomplete writes before success.
+        with np.load(temp_path, allow_pickle=False) as saved:
+            for key in ("fps", *keys):
+                if not np.array_equal(saved[key], np.asarray(log[key])):
+                    raise ValueError(f"Saved motion verification failed: {key}")
+        temp_path.replace(output_path)
+    finally:
+        if temp_path is not None and temp_path.exists():
+            temp_path.unlink()
 
 
 @configclass
@@ -298,17 +334,31 @@ def run_simulator(sim: sim_utils.SimulationContext, scene: InteractiveScene, joi
             ):
                 log[k] = np.stack(log[k], axis=0)
 
-            np.savez("/tmp/motion.npz", **log)
+            output_path = Path(args_cli.output_file).expanduser().resolve()
+            save_local_motion(output_path, log, motion.output_frames)
+            print(f"[INFO]: Motion saved locally: {output_path}", flush=True)
 
-            import wandb
+            if args_cli.exit_after_save and args_cli.no_upload and args_cli.headless:
+                # No render recorder or upload is pending. All output files are
+                # verified and closed; bypass Kit teardown that can hang headless.
+                print("[INFO]: Saved NPZ verified; exiting headless batch converter.", flush=True)
+                sys.stdout.flush()
+                sys.stderr.flush()
+                os._exit(0)
 
-            COLLECTION = args_cli.output_name
-            run = wandb.init(project="csv_to_npz", name=COLLECTION)
-            print(f"[INFO]: Logging motion to wandb: {COLLECTION}")
-            REGISTRY = "motions"
-            logged_artifact = run.log_artifact(artifact_or_path="/tmp/motion.npz", name=COLLECTION, type=REGISTRY)
-            run.link_artifact(artifact=logged_artifact, target_path=f"wandb-registry-{REGISTRY}/{COLLECTION}")
-            print(f"[INFO]: Motion saved to wandb registry: {REGISTRY}/{COLLECTION}")
+            if not args_cli.no_upload:
+                import wandb
+
+                COLLECTION = args_cli.output_name
+                run = wandb.init(project="csv_to_npz", name=COLLECTION)
+                print(f"[INFO]: Logging motion to wandb: {COLLECTION}")
+                REGISTRY = "motions"
+                logged_artifact = run.log_artifact(artifact_or_path=str(output_path), name=COLLECTION, type=REGISTRY)
+                run.link_artifact(artifact=logged_artifact, target_path=f"wandb-registry-{REGISTRY}/{COLLECTION}")
+                print(f"[INFO]: Motion saved to wandb registry: {REGISTRY}/{COLLECTION}")
+                run.finish()
+            if args_cli.exit_after_save:
+                break
 
 
 def main():
@@ -365,5 +415,8 @@ def main():
 if __name__ == "__main__":
     # run the main function
     main()
-    # close sim app
-    simulation_app.close()
+    # This FK conversion does not use a Replicator recording workflow.
+    # Waiting for the default orchestrator completion can stall headless shutdown.
+    print("[INFO]: Conversion loop finished; closing Isaac Sim without waiting for Replicator.", flush=True)
+    simulation_app.close(wait_for_replicator=False)
+    print("[INFO]: Isaac Sim closed.", flush=True)

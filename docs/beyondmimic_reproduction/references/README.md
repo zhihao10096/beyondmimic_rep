@@ -10,6 +10,7 @@
 - `official_issue6_comments.json`、`official_repo_metadata.json`、`zenodo_record.json`、`lafan_dataset_metadata.json`、`robot_asset_headers.json`：当次来源核验记录；不是实时服务状态。
 - [offline_probes.json](offline_probes.json)：有限离线数值探测，不代表物理闭环通过。
 - [preparation_qa.json](preparation_qa.json)：文档链接、JSON/YAML解析、CSV hash和原源码未修改的最终检查。
+- [teacher_command_checks.json](teacher_command_checks.json)：后续训练入口补丁的CLI/帧率检查/语法验证，未启动IsaacSim。原preparation_qa是准备阶段的历史快照。
 
 论文快照、原始CSV和外部checkout被本准备包`.gitignore`排除。当前文件保存在本地；仅执行git提交不会携带全部快照。迁移时复制整个准备包，或按锁定来源重新取得文件，再校验hash。
 

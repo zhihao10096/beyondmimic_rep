@@ -18,10 +18,16 @@ local_16gb:
   train_and_simultaneously_simulate: false
 
 server_teacher_collection:
-  gpu_count: 6
+  gpu_count: 12
   gpu_each: RTX_4090_24gb
   jobs_per_gpu_initial: 1
   task_parallelism: independent_motion_jobs
+  training_seeds_per_motion_initial: 1
+  initial_placement: one_motion_per_server_four_servers
+  initial_gpu_id_per_server: 0
+  initial_training_seed_override: null
+  initial_num_envs_override: null
+  repeat_training_only_for_failure_or_final_variance_study: true
   teacher_env_profile_candidates: [512, 1024, 2048, 4096]
   collector_env_profile_candidates: [128, 256, 512]
   source_and_student_checkpoint_frozen_per_round: true
@@ -38,7 +44,9 @@ server_diffusion_paper_batch:
   local_microbatch: 128
   gradient_accumulation: 1
   global_batch: 512
-  remaining_gpu_count: 2
+  remaining_gpu_count: 8
+  initial_training_seed_count: 1
+  optional_final_seed_groups_on_12_gpus: [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11]]
   checkpoint_write_rank: 0
   initial_precision: fp32
   optional_precision_after_validation: bf16
