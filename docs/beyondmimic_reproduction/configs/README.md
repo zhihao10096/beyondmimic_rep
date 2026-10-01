@@ -5,5 +5,6 @@
 - `paper_v4_design.yaml`：P4给定值与工程选择分别成段。
 - `resource_profiles.yaml`：本地/单卡/4卡配置起点；profile后选用。
 - `teacher_map.template.json`：每motion权重/normalizer/motion/env的可迁移关联；所有status都是待训练，路径为空，禁止当可用teacher读取。
+- `teacher_curriculum_v1.json`：当前12-motion准备与训练清单，记录实际NPZ hash；前4个由用户报告training，新增8个assets ready，所有checkpoint/gate仍为空。它是登记清单，不是官方train.py可直接加载的配置。
 
 所有维度、frame、时间与normalizer定义都应在加载时验证。checkpoint复制resolved config及hash，不能只保存模板名称。`null`表示尚未确定，不代表默认0。

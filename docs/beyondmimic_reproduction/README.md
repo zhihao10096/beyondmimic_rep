@@ -21,6 +21,7 @@
 | [07_决策与未确定项.md](07_决策与未确定项.md) | 论文明确内容与工程假设分开记录 | 修改默认方案前 |
 | [08_执行进度.md](08_执行进度.md) | 持续记录工作状态与实验产物，避免多轮实现遗忘 | 每轮结束更新 |
 | [09_采样算法与接口规范.md](09_采样算法与接口规范.md) | DDPM系数、mask、guidance梯度和checkpoint/策略接口 | 实现T07–T10时 |
+| [10_Teacher扩库与开训.md](10_Teacher扩库与开训.md) | 新增8种motion、本地已转换资产、独立开训命令和接触动作检查 | 当前扩库 |
 | [configs/](configs/) | 设计参数模板与 teacher 清单模板，当前不是已接入的运行配置 | 实现配置加载器时 |
 | [references/](references/) | 分享对话、论文、本地审查源码、数据来源和离线探测结果 | 按需定位证据 |
 
@@ -54,7 +55,8 @@ flowchart LR
 - 分享对话的用户与助手正文：[references/shared_conversation.md](references/shared_conversation.md)。只提取可见消息，没有保留隐藏提示、工具历史或登录数据。
 - BeyondMimic **v4（2025-11-13）** HTML 与可搜索文本，包含补充材料。
 - 两个只读参考 checkout：`references/repos/BeyondMimic-Reproduction`、`references/repos/UniPhys`；确切 commit 见证据文档。
-- 4 个真实 G1 CSV：`walk1_subject1`、`walk2_subject1`、`run1_subject2`、`dance1_subject1`；固定数据集 revision，全部 36 列。SHA256 与下载地址见 [references/raw_g1_manifest.json](references/raw_g1_manifest.json)。它们是运动学参考，尚未转为官方物理环境的 NPZ。
+- 初始4个真实 G1 CSV：`walk1_subject1`、`walk2_subject1`、`run1_subject2`、`dance1_subject1`；固定数据集 revision，全部36列。SHA256与下载地址见[references/raw_g1_manifest.json](references/raw_g1_manifest.json)。它们是运动学参考。
+- 后续已将上述4个转换为25Hz NPZ，用户报告其teacher正在训练；新增8个CSV/25Hz NPZ也已准备，详见10文档及[扩库审查](references/expanded_motion_asset_audit.json)。数据通过不等同teacher质量通过。
 - 官方资源链接及机器人压缩包可达性核验，尚未下载 55.6MB 的机器人模型包。
 - 候选代码的投影回环、网络形状和噪声日程离线探测：[references/offline_probes.json](references/offline_probes.json)。这不构成 trained policy 或仿真效果证据。
 - 来源锁及最终文档检查：[references/sources_lock.json](references/sources_lock.json)、[references/preparation_qa.json](references/preparation_qa.json)。JSON/YAML解析、内部文档链接和4个CSV hash检查已通过。

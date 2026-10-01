@@ -1,0 +1,510 @@
+{
+  "scope": "kinematic assets only; no teacher quality claim",
+  "csv_joint_names": [
+    "left_hip_pitch_joint",
+    "left_hip_roll_joint",
+    "left_hip_yaw_joint",
+    "left_knee_joint",
+    "left_ankle_pitch_joint",
+    "left_ankle_roll_joint",
+    "right_hip_pitch_joint",
+    "right_hip_roll_joint",
+    "right_hip_yaw_joint",
+    "right_knee_joint",
+    "right_ankle_pitch_joint",
+    "right_ankle_roll_joint",
+    "waist_yaw_joint",
+    "waist_roll_joint",
+    "waist_pitch_joint",
+    "left_shoulder_pitch_joint",
+    "left_shoulder_roll_joint",
+    "left_shoulder_yaw_joint",
+    "left_elbow_joint",
+    "left_wrist_roll_joint",
+    "left_wrist_pitch_joint",
+    "left_wrist_yaw_joint",
+    "right_shoulder_pitch_joint",
+    "right_shoulder_roll_joint",
+    "right_shoulder_yaw_joint",
+    "right_elbow_joint",
+    "right_wrist_roll_joint",
+    "right_wrist_pitch_joint",
+    "right_wrist_yaw_joint"
+  ],
+  "urdf_sha256": "dbc8471004e9b0b85c27a4ebc1f0d90a727c1cf7ca9ef507b805596f2004d64b",
+  "joint_limit_check_available": true,
+  "motions": [
+    {
+      "motion_id": "sprint1_subject2",
+      "csv": {
+        "frames": 8194,
+        "fps": 30,
+        "duration_s": 273.1,
+        "root_height_range_m": [
+          0.576345,
+          0.855026
+        ],
+        "root_speed_p99_m_s": 3.929661394181848,
+        "root_speed_max_m_s": 4.572352074288458,
+        "root_step_max_m": 0.18486086590189973,
+        "joint_step_max_rad": 0.5643039999999999,
+        "root_tilt_max_deg": 57.3498208726292,
+        "low_root_fraction_below_035m": 0.0,
+        "urdf_joint_limit_warnings": [],
+        "note": "Height/tilt are kinematic indicators; they do not identify exact skills or prove a policy can execute them."
+      },
+      "npz": {
+        "fps": 25,
+        "frames": 6828,
+        "body_count": 30,
+        "sha256": "92c6e763295b57a5fe5ab8c44b53ef7585a2273480f0dd969ecf4f10286c51db",
+        "bytes": 12237570,
+        "shapes": {
+          "joint_pos": [
+            6828,
+            29
+          ],
+          "joint_vel": [
+            6828,
+            29
+          ],
+          "body_pos_w": [
+            6828,
+            30,
+            3
+          ],
+          "body_quat_w": [
+            6828,
+            30,
+            4
+          ],
+          "body_lin_vel_w": [
+            6828,
+            30,
+            3
+          ],
+          "body_ang_vel_w": [
+            6828,
+            30,
+            3
+          ]
+        },
+        "body_origin_height_min_m": 0.02823205105960369,
+        "body_origin_height_note": "Link origins are not collision surfaces; this is not a penetration test."
+      }
+    },
+    {
+      "motion_id": "jumps1_subject1",
+      "csv": {
+        "frames": 7334,
+        "fps": 30,
+        "duration_s": 244.43333333333334,
+        "root_height_range_m": [
+          0.555741,
+          0.912012
+        ],
+        "root_speed_p99_m_s": 1.9856925331369715,
+        "root_speed_max_m_s": 2.5803453366700757,
+        "root_step_max_m": 0.1044207703716077,
+        "joint_step_max_rad": 0.723728,
+        "root_tilt_max_deg": 35.04897118973723,
+        "low_root_fraction_below_035m": 0.0,
+        "urdf_joint_limit_warnings": [],
+        "note": "Height/tilt are kinematic indicators; they do not identify exact skills or prove a policy can execute them."
+      },
+      "npz": {
+        "fps": 25,
+        "frames": 6111,
+        "body_count": 30,
+        "sha256": "cdddc4fc039ac5ea91997d282be530c7f9284917e9b36cf439d478bde977914a",
+        "bytes": 10952706,
+        "shapes": {
+          "joint_pos": [
+            6111,
+            29
+          ],
+          "joint_vel": [
+            6111,
+            29
+          ],
+          "body_pos_w": [
+            6111,
+            30,
+            3
+          ],
+          "body_quat_w": [
+            6111,
+            30,
+            4
+          ],
+          "body_lin_vel_w": [
+            6111,
+            30,
+            3
+          ],
+          "body_ang_vel_w": [
+            6111,
+            30,
+            3
+          ]
+        },
+        "body_origin_height_min_m": 0.033879734575748444,
+        "body_origin_height_note": "Link origins are not collision surfaces; this is not a penetration test."
+      }
+    },
+    {
+      "motion_id": "fight1_subject2",
+      "csv": {
+        "frames": 7347,
+        "fps": 30,
+        "duration_s": 244.86666666666667,
+        "root_height_range_m": [
+          0.419777,
+          0.926556
+        ],
+        "root_speed_p99_m_s": 2.514550858562739,
+        "root_speed_max_m_s": 3.1575566971037916,
+        "root_step_max_m": 0.10618899485351593,
+        "joint_step_max_rad": 1.201908,
+        "root_tilt_max_deg": 55.069934803601285,
+        "low_root_fraction_below_035m": 0.0,
+        "urdf_joint_limit_warnings": [],
+        "note": "Height/tilt are kinematic indicators; they do not identify exact skills or prove a policy can execute them."
+      },
+      "npz": {
+        "fps": 25,
+        "frames": 6122,
+        "body_count": 30,
+        "sha256": "526b3c1d00e75c4920d363b1db44ffc93911edb929e5a6d6096c00c1ca60757b",
+        "bytes": 10972418,
+        "shapes": {
+          "joint_pos": [
+            6122,
+            29
+          ],
+          "joint_vel": [
+            6122,
+            29
+          ],
+          "body_pos_w": [
+            6122,
+            30,
+            3
+          ],
+          "body_quat_w": [
+            6122,
+            30,
+            4
+          ],
+          "body_lin_vel_w": [
+            6122,
+            30,
+            3
+          ],
+          "body_ang_vel_w": [
+            6122,
+            30,
+            3
+          ]
+        },
+        "body_origin_height_min_m": 0.020956646651029587,
+        "body_origin_height_note": "Link origins are not collision surfaces; this is not a penetration test."
+      }
+    },
+    {
+      "motion_id": "fightAndSports1_subject1",
+      "csv": {
+        "frames": 7355,
+        "fps": 30,
+        "duration_s": 245.13333333333333,
+        "root_height_range_m": [
+          0.241221,
+          0.908233
+        ],
+        "root_speed_p99_m_s": 2.309302708741593,
+        "root_speed_max_m_s": 2.6529585187767233,
+        "root_step_max_m": 0.08877856919887818,
+        "joint_step_max_rad": 0.80318,
+        "root_tilt_max_deg": 58.2460757541152,
+        "low_root_fraction_below_035m": 0.007749830047586676,
+        "urdf_joint_limit_warnings": [],
+        "note": "Height/tilt are kinematic indicators; they do not identify exact skills or prove a policy can execute them."
+      },
+      "npz": {
+        "fps": 25,
+        "frames": 6129,
+        "body_count": 30,
+        "sha256": "6c0c68224c5df6e702796e506ab438938ae50a8d3c1f2295e2c5b8eb7232b5be",
+        "bytes": 10984962,
+        "shapes": {
+          "joint_pos": [
+            6129,
+            29
+          ],
+          "joint_vel": [
+            6129,
+            29
+          ],
+          "body_pos_w": [
+            6129,
+            30,
+            3
+          ],
+          "body_quat_w": [
+            6129,
+            30,
+            4
+          ],
+          "body_lin_vel_w": [
+            6129,
+            30,
+            3
+          ],
+          "body_ang_vel_w": [
+            6129,
+            30,
+            3
+          ]
+        },
+        "body_origin_height_min_m": 0.030297979712486267,
+        "body_origin_height_note": "Link origins are not collision surfaces; this is not a penetration test."
+      }
+    },
+    {
+      "motion_id": "dance2_subject1",
+      "csv": {
+        "frames": 6771,
+        "fps": 30,
+        "duration_s": 225.66666666666666,
+        "root_height_range_m": [
+          0.397043,
+          0.881072
+        ],
+        "root_speed_p99_m_s": 1.550387837461277,
+        "root_speed_max_m_s": 2.2953413429487974,
+        "root_step_max_m": 0.0767500747361199,
+        "joint_step_max_rad": 0.97627,
+        "root_tilt_max_deg": 63.10470554511619,
+        "low_root_fraction_below_035m": 0.0,
+        "urdf_joint_limit_warnings": [],
+        "note": "Height/tilt are kinematic indicators; they do not identify exact skills or prove a policy can execute them."
+      },
+      "npz": {
+        "fps": 25,
+        "frames": 5642,
+        "body_count": 30,
+        "sha256": "1d0d5656f278fdcdc89270ca381307de0f743b865e006df191767dc250722fb2",
+        "bytes": 10112258,
+        "shapes": {
+          "joint_pos": [
+            5642,
+            29
+          ],
+          "joint_vel": [
+            5642,
+            29
+          ],
+          "body_pos_w": [
+            5642,
+            30,
+            3
+          ],
+          "body_quat_w": [
+            5642,
+            30,
+            4
+          ],
+          "body_lin_vel_w": [
+            5642,
+            30,
+            3
+          ],
+          "body_ang_vel_w": [
+            5642,
+            30,
+            3
+          ]
+        },
+        "body_origin_height_min_m": 0.032106664031744,
+        "body_origin_height_note": "Link origins are not collision surfaces; this is not a penetration test."
+      }
+    },
+    {
+      "motion_id": "fallAndGetUp1_subject1",
+      "csv": {
+        "frames": 5047,
+        "fps": 30,
+        "duration_s": 168.2,
+        "root_height_range_m": [
+          0.050398,
+          0.802028
+        ],
+        "root_speed_p99_m_s": 2.267646303904121,
+        "root_speed_max_m_s": 2.4941546546726046,
+        "root_step_max_m": 0.08326233563863092,
+        "joint_step_max_rad": 0.49992000000000003,
+        "root_tilt_max_deg": 142.40738155182916,
+        "low_root_fraction_below_035m": 0.3407965127798692,
+        "urdf_joint_limit_warnings": [],
+        "note": "Height/tilt are kinematic indicators; they do not identify exact skills or prove a policy can execute them."
+      },
+      "npz": {
+        "fps": 25,
+        "frames": 4205,
+        "body_count": 30,
+        "sha256": "c269feb5b416ece0887f21c4aaacd648fcb16e065b474620f8f4df5a73979a85",
+        "bytes": 7537154,
+        "shapes": {
+          "joint_pos": [
+            4205,
+            29
+          ],
+          "joint_vel": [
+            4205,
+            29
+          ],
+          "body_pos_w": [
+            4205,
+            30,
+            3
+          ],
+          "body_quat_w": [
+            4205,
+            30,
+            4
+          ],
+          "body_lin_vel_w": [
+            4205,
+            30,
+            3
+          ],
+          "body_ang_vel_w": [
+            4205,
+            30,
+            3
+          ]
+        },
+        "body_origin_height_min_m": -0.05371115356683731,
+        "body_origin_height_note": "Link origins are not collision surfaces; this is not a penetration test."
+      }
+    },
+    {
+      "motion_id": "fallAndGetUp2_subject2",
+      "csv": {
+        "frames": 4918,
+        "fps": 30,
+        "duration_s": 163.9,
+        "root_height_range_m": [
+          0.044162,
+          0.791492
+        ],
+        "root_speed_p99_m_s": 3.2465043690951774,
+        "root_speed_max_m_s": 3.87031646086919,
+        "root_step_max_m": 0.12961265571309014,
+        "joint_step_max_rad": 0.5129079999999999,
+        "root_tilt_max_deg": 111.98309966194381,
+        "low_root_fraction_below_035m": 0.3991459943066287,
+        "urdf_joint_limit_warnings": [],
+        "note": "Height/tilt are kinematic indicators; they do not identify exact skills or prove a policy can execute them."
+      },
+      "npz": {
+        "fps": 25,
+        "frames": 4098,
+        "body_count": 30,
+        "sha256": "ec24991635d8ec3006a44568ec5471eec63064e96495ab60720c75e5afc38acf",
+        "bytes": 7345410,
+        "shapes": {
+          "joint_pos": [
+            4098,
+            29
+          ],
+          "joint_vel": [
+            4098,
+            29
+          ],
+          "body_pos_w": [
+            4098,
+            30,
+            3
+          ],
+          "body_quat_w": [
+            4098,
+            30,
+            4
+          ],
+          "body_lin_vel_w": [
+            4098,
+            30,
+            3
+          ],
+          "body_ang_vel_w": [
+            4098,
+            30,
+            3
+          ]
+        },
+        "body_origin_height_min_m": -0.06624117493629456,
+        "body_origin_height_note": "Link origins are not collision surfaces; this is not a penetration test."
+      }
+    },
+    {
+      "motion_id": "fallAndGetUp3_subject1",
+      "csv": {
+        "frames": 3066,
+        "fps": 30,
+        "duration_s": 102.16666666666667,
+        "root_height_range_m": [
+          0.125229,
+          0.806277
+        ],
+        "root_speed_p99_m_s": 1.6821924484726796,
+        "root_speed_max_m_s": 2.2247515448303417,
+        "root_step_max_m": 0.07452948091862696,
+        "joint_step_max_rad": 0.80149,
+        "root_tilt_max_deg": 84.29605084545187,
+        "low_root_fraction_below_035m": 0.12915851272015655,
+        "urdf_joint_limit_warnings": [],
+        "note": "Height/tilt are kinematic indicators; they do not identify exact skills or prove a policy can execute them."
+      },
+      "npz": {
+        "fps": 25,
+        "frames": 2555,
+        "body_count": 30,
+        "sha256": "a909a00e56b1e7c1aa9d787182d8542d810c8d6876fc94f49072e6a8a4d88bd5",
+        "bytes": 4580354,
+        "shapes": {
+          "joint_pos": [
+            2555,
+            29
+          ],
+          "joint_vel": [
+            2555,
+            29
+          ],
+          "body_pos_w": [
+            2555,
+            30,
+            3
+          ],
+          "body_quat_w": [
+            2555,
+            30,
+            4
+          ],
+          "body_lin_vel_w": [
+            2555,
+            30,
+            3
+          ],
+          "body_ang_vel_w": [
+            2555,
+            30,
+            3
+          ]
+        },
+        "body_origin_height_min_m": -0.06232718750834465,
+        "body_origin_height_note": "Link origins are not collision surfaces; this is not a penetration test."
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "real_conversion_count": 8,
+  "conversion_exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "asset_audit": "8 CSV and NPZ passed including pinned source/NPZ hashes",
+  "negative_checks": [
+    "wrong CSV hash rejected",
+    "NaN CSV rejected",
+    "invalid quaternion rejected",
+    "50Hz NPZ rejected",
+    "inconsistent frame count rejected",
+    "copied NPZ hash mismatch rejected"
+  ],
+  "command_checks": "8 independent default-parameter commented training commands, all existing motion paths; uncommented Bash syntax passed",
+  "limits": "No new teacher training, contact probes, or RL quality gate executed"
+}

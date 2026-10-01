@@ -78,20 +78,21 @@
 # mkdir -p logs/teacher_console
 
 ## 服务器1：walk1_subject1
+# cd /pfs/user/learning/whole_body_tracking
 # source .venv/bin/activate
 # python  scripts/rsl_rl/train.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/walk1_subject1.npz --experiment_name g1_teacher_walk1_subject1 --run_name walk1_subject1_default --logger tensorboard --headless
 
 ## 服务器2：walk2_subject1
 # source .venv/bin/activate
-# python -u scripts/rsl_rl/train.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/walk2_subject1.npz --experiment_name g1_teacher_walk2_subject1 --run_name walk2_subject1_default --logger tensorboard --headless
+# python scripts/rsl_rl/train.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/walk2_subject1.npz --experiment_name g1_teacher_walk2_subject1 --run_name walk2_subject1_default --logger tensorboard --headless
 
 ## 服务器3：run1_subject2
 # source .venv/bin/activate
-# python -u scripts/rsl_rl/train.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/run1_subject2.npz --experiment_name g1_teacher_run1_subject2 --run_name run1_subject2_default --logger tensorboard --headless
+# python scripts/rsl_rl/train.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/run1_subject2.npz --experiment_name g1_teacher_run1_subject2 --run_name run1_subject2_default --logger tensorboard --headless
 
 ## 服务器4：dance1_subject1
 # source .venv/bin/activate
-# python -u scripts/rsl_rl/train.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/dance1_subject1.npz --experiment_name g1_teacher_dance1_subject1 --run_name dance1_subject1_default --logger tensorboard --headless
+# python scripts/rsl_rl/train.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/dance1_subject1.npz --experiment_name g1_teacher_dance1_subject1 --run_name dance1_subject1_default --logger tensorboard --headless
 
 ## 本节run_name使用_default；回放/恢复时load_run应匹配本节名称，而非第3节的_seed0。
 ## 例如walk1：--load_run '.*walk1_subject1_default$' --checkpoint 'model_.*.pt'
@@ -100,10 +101,72 @@
 ## teacher扩库：12卡分别训练12个不同motion/片段，一个teacher对应一个动作。
 ## 每个motion先训练一次，按validation选择合格checkpoint；不稳定/失败的motion才追加训练seed。
 ## 同一teacher仍需不同评估seed/初始phase/扰动的多次rollout，这是评估，不是重新训练teacher。
-## 空闲卡可验证已完成teacher，同时准备/训练新的motion；当前尚未准备另外8个motion。
+## 当前4个teacher由用户报告正在训练；新增8个motion已在第5节准备，开训前分配空闲显卡。
 ## D0/DAgger：按motion/采集seed并行仿真采集，teacher提供标签，student执行DAgger。
 ## VAE：先单卡训练一个统一student，包含所有合格teacher，不需要每卡一套专属VAE。
 ## VAE+OU：12卡并行真实rollout，固定同一VAE权重，每卡写独立shard。
 ## diffusion：先4卡DDP，每卡128/global512，先训练一个模型；余卡可采集/评估/扩库。
 ## 3组×4卡不同训练seed仅在最终重复性评估时可选，不是当前必做任务。
 ## 最终12卡按任务/seed并行闭环评估。不要在teacher尚未合格时开始正式VAE/diffusion训练。
+
+## 5. 新增8个不同motion：本地CSV和25Hz NPZ已准备；不重复启动前4个teacher。
+## 由你决定每条命令在哪台服务器、哪张空闲卡运行，本节不指定CUDA_VISIBLE_DEVICES。
+## 如一台机器并行多个job，请在各自终端/调度器先正确分配不同GPU；不要默认都占GPU0。
+## seed/num_envs/max_iterations沿用仓库默认；每条训练命令独立、前台运行。
+## 在目标服务器同步对应NPZ、当前脚本/文档后，从项目根目录激活环境。
+# source .venv/bin/activate
+# mkdir -p logs/teacher_console
+
+## 资产校验：若复制了完整扩库包（包含CSV/NPZ/manifest/audit脚本），先运行以下命令。
+# python scripts/audit_motion_assets.py --manifest docs/beyondmimic_reproduction/references/expanded_raw_g1_manifest.json --raw_dir data/reproduction/raw_g1 --npz_dir data/reproduction/motions_25hz --expected_report docs/beyondmimic_reproduction/references/expanded_motion_asset_audit.json --report logs/teacher_console/expanded_asset_audit.json
+
+## 若没有复制本地数据，可在服务器下载；已经复制则跳过。下载只用CPU/网络。
+# mkdir -p data/reproduction/raw_g1 data/reproduction/motions_25hz
+# DATA_REV="ce1572906efe6157840e8474d5a0d7aa87481e74"
+# EXTRA_MOTIONS=(sprint1_subject2 jumps1_subject1 fight1_subject2 fightAndSports1_subject1 dance2_subject1 fallAndGetUp1_subject1 fallAndGetUp2_subject2 fallAndGetUp3_subject1)
+# for motion in "${EXTRA_MOTIONS[@]}"; do
+#   curl -fL --retry 3 -o "data/reproduction/raw_g1/${motion}.csv" "https://huggingface.co/datasets/lvhaidong/LAFAN1_Retargeting_Dataset/resolve/${DATA_REV}/g1/${motion}.csv" || break
+# done
+# python scripts/audit_motion_assets.py --manifest docs/beyondmimic_reproduction/references/expanded_raw_g1_manifest.json --raw_dir data/reproduction/raw_g1 --report logs/teacher_console/expanded_csv_audit.json
+
+## 如需重建NPZ，在分配好的空闲GPU上执行；本地8个NPZ已转换，无需重复转换。
+# EXTRA_MOTIONS=(sprint1_subject2 jumps1_subject1 fight1_subject2 fightAndSports1_subject1 dance2_subject1 fallAndGetUp1_subject1 fallAndGetUp2_subject2 fallAndGetUp3_subject1)
+# for motion in "${EXTRA_MOTIONS[@]}"; do
+#   python scripts/csv_to_npz.py --input_file "data/reproduction/raw_g1/${motion}.csv" --input_fps 30 --output_fps 25 --output_file "data/reproduction/motions_25hz/${motion}.npz" --no_upload --exit_after_save --headless || break
+# done
+
+## 冲刺候选：sprint1_subject2
+# python scripts/rsl_rl/train.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/sprint1_subject2.npz --experiment_name g1_teacher_sprint1_subject2 --run_name sprint1_subject2_default --logger tensorboard --headless
+
+## 跳跃候选：jumps1_subject1
+# python scripts/rsl_rl/train.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/jumps1_subject1.npz --experiment_name g1_teacher_jumps1_subject1 --run_name jumps1_subject1_default --logger tensorboard --headless
+
+## 格斗候选：fight1_subject2
+# python scripts/rsl_rl/train.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/fight1_subject2.npz --experiment_name g1_teacher_fight1_subject2 --run_name fight1_subject2_default --logger tensorboard --headless
+
+## 格斗与运动候选：fightAndSports1_subject1
+# python scripts/rsl_rl/train.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/fightAndSports1_subject1.npz --experiment_name g1_teacher_fightAndSports1_subject1 --run_name fightAndSports1_subject1_default --logger tensorboard --headless
+
+## 另一组舞蹈候选：dance2_subject1
+# python scripts/rsl_rl/train.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/dance2_subject1.npz --experiment_name g1_teacher_dance2_subject1 --run_name dance2_subject1_default --logger tensorboard --headless
+
+## 跌倒起身候选1：fallAndGetUp1_subject1
+## 此动作有低姿态/低连杆原点，先短训与回放检查，成功后才启动下方正式训练。
+# python scripts/rsl_rl/train.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/fallAndGetUp1_subject1.npz --experiment_name g1_teacher_fallAndGetUp1_subject1_probe --run_name fallAndGetUp1_subject1_probe --max_iterations 100 --logger tensorboard --headless
+# python scripts/rsl_rl/play.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/fallAndGetUp1_subject1.npz --experiment_name g1_teacher_fallAndGetUp1_subject1_probe --load_run ".*fallAndGetUp1_subject1_probe$" --checkpoint "model_.*.pt" --num_envs 1 --video --video_length 1000 --headless
+# python scripts/rsl_rl/train.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/fallAndGetUp1_subject1.npz --experiment_name g1_teacher_fallAndGetUp1_subject1 --run_name fallAndGetUp1_subject1_default --logger tensorboard --headless
+
+## 跌倒起身候选2：fallAndGetUp2_subject2
+## 此动作有低姿态/低连杆原点，先短训与回放检查，成功后才启动下方正式训练。
+# python scripts/rsl_rl/train.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/fallAndGetUp2_subject2.npz --experiment_name g1_teacher_fallAndGetUp2_subject2_probe --run_name fallAndGetUp2_subject2_probe --max_iterations 100 --logger tensorboard --headless
+# python scripts/rsl_rl/play.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/fallAndGetUp2_subject2.npz --experiment_name g1_teacher_fallAndGetUp2_subject2_probe --load_run ".*fallAndGetUp2_subject2_probe$" --checkpoint "model_.*.pt" --num_envs 1 --video --video_length 1000 --headless
+# python scripts/rsl_rl/train.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/fallAndGetUp2_subject2.npz --experiment_name g1_teacher_fallAndGetUp2_subject2 --run_name fallAndGetUp2_subject2_default --logger tensorboard --headless
+
+## 跌倒起身候选3：fallAndGetUp3_subject1
+## 此动作有低姿态/低连杆原点，先短训与回放检查，成功后才启动下方正式训练。
+# python scripts/rsl_rl/train.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/fallAndGetUp3_subject1.npz --experiment_name g1_teacher_fallAndGetUp3_subject1_probe --run_name fallAndGetUp3_subject1_probe --max_iterations 100 --logger tensorboard --headless
+# python scripts/rsl_rl/play.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/fallAndGetUp3_subject1.npz --experiment_name g1_teacher_fallAndGetUp3_subject1_probe --load_run ".*fallAndGetUp3_subject1_probe$" --checkpoint "model_.*.pt" --num_envs 1 --video --video_length 1000 --headless
+# python scripts/rsl_rl/train.py --task Tracking-Flat-G1-Low-Freq-v0 --motion_file data/reproduction/motions_25hz/fallAndGetUp3_subject1.npz --experiment_name g1_teacher_fallAndGetUp3_subject1 --run_name fallAndGetUp3_subject1_default --logger tensorboard --headless
+
+## 100轮probe检查启动/reset/数值和接触问题，不要求此时已学会完整起身。
+## 8个正式teacher命令均未执行；通过04文档的完整tracking验收后才能纳入VAE。

@@ -11,6 +11,7 @@
 - [offline_probes.json](offline_probes.json)：有限离线数值探测，不代表物理闭环通过。
 - [preparation_qa.json](preparation_qa.json)：文档链接、JSON/YAML解析、CSV hash和原源码未修改的最终检查。
 - [teacher_command_checks.json](teacher_command_checks.json)：后续训练入口补丁的CLI/帧率检查/语法验证，未启动IsaacSim。原preparation_qa是准备阶段的历史快照。
+- [expanded_raw_g1_manifest.json](expanded_raw_g1_manifest.json)、[expanded_motion_asset_audit.json](expanded_motion_asset_audit.json)：新增8个真实CSV与已转换NPZ的来源、hash、形状和运动学检查；不代表teacher通过。
 
 论文快照、原始CSV和外部checkout被本准备包`.gitignore`排除。当前文件保存在本地；仅执行git提交不会携带全部快照。迁移时复制整个准备包，或按锁定来源重新取得文件，再校验hash。
 

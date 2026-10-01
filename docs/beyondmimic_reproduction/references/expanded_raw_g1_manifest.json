@@ -1,0 +1,162 @@
+[
+  {
+    "motion_id": "sprint1_subject2",
+    "relative_path": "data/reproduction/raw_g1/sprint1_subject2.csv",
+    "url": "https://huggingface.co/datasets/lvhaidong/LAFAN1_Retargeting_Dataset/resolve/ce1572906efe6157840e8474d5a0d7aa87481e74/g1/sprint1_subject2.csv",
+    "revision": "ce1572906efe6157840e8474d5a0d7aa87481e74",
+    "sha256": "7babbd9d0a3cebf040709cb75fbf4268e925e337a2d44600dcce3d3b2d24a818",
+    "bytes": 2803922,
+    "frames": 8194,
+    "column_counts": [
+      36
+    ],
+    "fps": 30,
+    "duration_s": 273.1,
+    "quaternion_format": "xyzw",
+    "root_height_min_m": 0.576345,
+    "root_height_max_m": 0.855026,
+    "root_step_max_m": 0.18486086590189973,
+    "joint_step_max_rad": 0.5643039999999999,
+    "quaternion_norm_max_error": 7.569327133971626e-07
+  },
+  {
+    "motion_id": "jumps1_subject1",
+    "relative_path": "data/reproduction/raw_g1/jumps1_subject1.csv",
+    "url": "https://huggingface.co/datasets/lvhaidong/LAFAN1_Retargeting_Dataset/resolve/ce1572906efe6157840e8474d5a0d7aa87481e74/g1/jumps1_subject1.csv",
+    "revision": "ce1572906efe6157840e8474d5a0d7aa87481e74",
+    "sha256": "3f55c1a0f87564044a71817d62dc2a40aa76332aa1cab3f1c817333a197c78c2",
+    "bytes": 2502300,
+    "frames": 7334,
+    "column_counts": [
+      36
+    ],
+    "fps": 30,
+    "duration_s": 244.43333333333334,
+    "quaternion_format": "xyzw",
+    "root_height_min_m": 0.555741,
+    "root_height_max_m": 0.912012,
+    "root_step_max_m": 0.1044207703716077,
+    "joint_step_max_rad": 0.723728,
+    "quaternion_norm_max_error": 7.359577708365705e-07
+  },
+  {
+    "motion_id": "fight1_subject2",
+    "relative_path": "data/reproduction/raw_g1/fight1_subject2.csv",
+    "url": "https://huggingface.co/datasets/lvhaidong/LAFAN1_Retargeting_Dataset/resolve/ce1572906efe6157840e8474d5a0d7aa87481e74/g1/fight1_subject2.csv",
+    "revision": "ce1572906efe6157840e8474d5a0d7aa87481e74",
+    "sha256": "c9ae5b9d90258061dfc79f617eaded73f2dde581fe37ac2d8e6b229c1a4a0ecb",
+    "bytes": 2524033,
+    "frames": 7347,
+    "column_counts": [
+      36
+    ],
+    "fps": 30,
+    "duration_s": 244.86666666666667,
+    "quaternion_format": "xyzw",
+    "root_height_min_m": 0.419777,
+    "root_height_max_m": 0.926556,
+    "root_step_max_m": 0.10618899485351593,
+    "joint_step_max_rad": 1.201908,
+    "quaternion_norm_max_error": 7.448567225232239e-07
+  },
+  {
+    "motion_id": "fightAndSports1_subject1",
+    "relative_path": "data/reproduction/raw_g1/fightAndSports1_subject1.csv",
+    "url": "https://huggingface.co/datasets/lvhaidong/LAFAN1_Retargeting_Dataset/resolve/ce1572906efe6157840e8474d5a0d7aa87481e74/g1/fightAndSports1_subject1.csv",
+    "revision": "ce1572906efe6157840e8474d5a0d7aa87481e74",
+    "sha256": "076c2614df1a155e52c2b14074da8aa3b209176d930d2e3ffd059a9e9847fdc2",
+    "bytes": 2521797,
+    "frames": 7355,
+    "column_counts": [
+      36
+    ],
+    "fps": 30,
+    "duration_s": 245.13333333333333,
+    "quaternion_format": "xyzw",
+    "root_height_min_m": 0.241221,
+    "root_height_max_m": 0.908233,
+    "root_step_max_m": 0.08877856919887818,
+    "joint_step_max_rad": 0.80318,
+    "quaternion_norm_max_error": 6.857622649736328e-07
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "relative_path": "data/reproduction/raw_g1/dance2_subject1.csv",
+    "url": "https://huggingface.co/datasets/lvhaidong/LAFAN1_Retargeting_Dataset/resolve/ce1572906efe6157840e8474d5a0d7aa87481e74/g1/dance2_subject1.csv",
+    "revision": "ce1572906efe6157840e8474d5a0d7aa87481e74",
+    "sha256": "f8611569a28fff323577ccb53021b0b189114510a284f76b234fc6e0e9f089e1",
+    "bytes": 2313604,
+    "frames": 6771,
+    "column_counts": [
+      36
+    ],
+    "fps": 30,
+    "duration_s": 225.66666666666666,
+    "quaternion_format": "xyzw",
+    "root_height_min_m": 0.397043,
+    "root_height_max_m": 0.881072,
+    "root_step_max_m": 0.0767500747361199,
+    "joint_step_max_rad": 0.97627,
+    "quaternion_norm_max_error": 7.329307686321229e-07
+  },
+  {
+    "motion_id": "fallAndGetUp1_subject1",
+    "relative_path": "data/reproduction/raw_g1/fallAndGetUp1_subject1.csv",
+    "url": "https://huggingface.co/datasets/lvhaidong/LAFAN1_Retargeting_Dataset/resolve/ce1572906efe6157840e8474d5a0d7aa87481e74/g1/fallAndGetUp1_subject1.csv",
+    "revision": "ce1572906efe6157840e8474d5a0d7aa87481e74",
+    "sha256": "97e98a9cac5150917bc5a2ca3517759a3f3c380582cde5e92ad663c1e0553e12",
+    "bytes": 1725253,
+    "frames": 5047,
+    "column_counts": [
+      36
+    ],
+    "fps": 30,
+    "duration_s": 168.2,
+    "quaternion_format": "xyzw",
+    "root_height_min_m": 0.050398,
+    "root_height_max_m": 0.802028,
+    "root_step_max_m": 0.08326233563863092,
+    "joint_step_max_rad": 0.49992000000000003,
+    "quaternion_norm_max_error": 8.531831361402453e-07
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "relative_path": "data/reproduction/raw_g1/fallAndGetUp2_subject2.csv",
+    "url": "https://huggingface.co/datasets/lvhaidong/LAFAN1_Retargeting_Dataset/resolve/ce1572906efe6157840e8474d5a0d7aa87481e74/g1/fallAndGetUp2_subject2.csv",
+    "revision": "ce1572906efe6157840e8474d5a0d7aa87481e74",
+    "sha256": "49ae9726ae176b10b1213b441535946ffcca93586e1091e8398e239f4a049a47",
+    "bytes": 1677557,
+    "frames": 4918,
+    "column_counts": [
+      36
+    ],
+    "fps": 30,
+    "duration_s": 163.9,
+    "quaternion_format": "xyzw",
+    "root_height_min_m": 0.044162,
+    "root_height_max_m": 0.791492,
+    "root_step_max_m": 0.12961265571309014,
+    "joint_step_max_rad": 0.5129079999999999,
+    "quaternion_norm_max_error": 8.877706059173818e-07
+  },
+  {
+    "motion_id": "fallAndGetUp3_subject1",
+    "relative_path": "data/reproduction/raw_g1/fallAndGetUp3_subject1.csv",
+    "url": "https://huggingface.co/datasets/lvhaidong/LAFAN1_Retargeting_Dataset/resolve/ce1572906efe6157840e8474d5a0d7aa87481e74/g1/fallAndGetUp3_subject1.csv",
+    "revision": "ce1572906efe6157840e8474d5a0d7aa87481e74",
+    "sha256": "fc00701411a270a9ab61c321ba836ba36437c61630c65f8fe276ac851f23ccd7",
+    "bytes": 1043143,
+    "frames": 3066,
+    "column_counts": [
+      36
+    ],
+    "fps": 30,
+    "duration_s": 102.16666666666667,
+    "quaternion_format": "xyzw",
+    "root_height_min_m": 0.125229,
+    "root_height_max_m": 0.806277,
+    "root_step_max_m": 0.07452948091862696,
+    "joint_step_max_rad": 0.80149,
+    "quaternion_norm_max_error": 8.084496732063684e-07
+  }
+]

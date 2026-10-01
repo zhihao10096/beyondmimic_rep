@@ -1,0 +1,7 @@
+{
+  "path": "artifacts/teacher_expansion_8motions.tar.gz",
+  "bytes": 75584134,
+  "sha256": "51ecca2b734a904c7543b34fae200adba27eea16c419ca802f2cbe46b4700b11",
+  "members": 25,
+  "verification": "every archived member hash matched source file"
+}
