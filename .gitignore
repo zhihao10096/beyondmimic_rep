@@ -35,10 +35,7 @@ _repo
 _build
 .lastformat
 
-*.csv
 *.pkl
 *.zarr
-*.npz
 
-**/assets/
 artifacts/
