@@ -1,0 +1,46 @@
+{
+  "scope": "offline numerical probes only; no trained policy or simulator",
+  "source_commit": "55b37260ce02573e70648111c534b735972a2af4",
+  "projection_roundtrip": {
+    "shape": [
+      163,
+      99
+    ],
+    "max_abs_error": 7.216449660063518e-15
+  },
+  "cosine": {
+    "alpha_bar_first": 0.992007315158844,
+    "alpha_bar_final": 9.999999974752427e-07,
+    "final_signal_sqrt": 0.0010000000474974513,
+    "clean_k0_is_exact": false
+  },
+  "linear": {
+    "alpha_bar_first": 0.9998999834060669,
+    "alpha_bar_final": 0.8167770504951477,
+    "final_signal_sqrt": 0.9037572145462036,
+    "clean_k0_is_exact": false
+  },
+  "small_vae_shapes": [
+    [
+      2,
+      29
+    ],
+    [
+      2,
+      32
+    ],
+    [
+      2,
+      32
+    ],
+    [
+      2,
+      32
+    ]
+  ],
+  "small_transformer_shape": [
+    2,
+    21,
+    195
+  ]
+}

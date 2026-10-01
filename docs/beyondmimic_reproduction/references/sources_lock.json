@@ -1,0 +1,113 @@
+{
+  "created_at_utc": "2026-10-01T05:58:22.009461+00:00",
+  "scope": "preparation snapshots; no trained model or simulation validation",
+  "paper_url": "https://arxiv.org/html/2508.08241v4",
+  "share_url": "https://chatgpt.com/share/6abdea89-df28-83e9-9d8f-7549e2b91705",
+  "data_revision": "ce1572906efe6157840e8474d5a0d7aa87481e74",
+  "repositories": [
+    {
+      "name": "official whole_body_tracking",
+      "commit": "cd65172032893724b445448818c34165846d847d"
+    },
+    {
+      "name": "BeyondMimic-Reproduction",
+      "commit": "55b37260ce02573e70648111c534b735972a2af4"
+    },
+    {
+      "name": "UniPhys",
+      "commit": "638306df5d002dcfd3dc29c82ea84a256c7da4d6"
+    }
+  ],
+  "reference_files": [
+    {
+      "path": "references/isaaclab_v2.1_rl_setup.py",
+      "bytes": 2577,
+      "sha256": "f070f6db653f806eb526dec0930aaa20792cab1dec3e29feef75be83b5a76fc5"
+    },
+    {
+      "path": "references/lafan_dataset_metadata.json",
+      "bytes": 12520,
+      "sha256": "bd2512027a73444561290ecd3803ad3735542ac06880b30b3adf841bb9eaefff"
+    },
+    {
+      "path": "references/official_issue6_comments.json",
+      "bytes": 1907,
+      "sha256": "76ab7fa4bc0caccd89d63f0ec99cf86b5ef26be06ec84fb8172bdf5c38b84a0c"
+    },
+    {
+      "path": "references/official_repo_metadata.json",
+      "bytes": 7008,
+      "sha256": "44af6faf74e695c453bf30f5357a2657e85c2b0a1c2416cbadbd891d952767c8"
+    },
+    {
+      "path": "references/offline_probes.json",
+      "bytes": 837,
+      "sha256": "64b041b8ac6ae56620ab40b1710d91758ce5e9bed3024bf42745917bd6e2c581"
+    },
+    {
+      "path": "references/paper_abs.html",
+      "bytes": 44106,
+      "sha256": "f49c9726e552203e846e23b2408970e4ec404d7d032ac32effaeb5a9cfce793a"
+    },
+    {
+      "path": "references/paper_v4.html",
+      "bytes": 465237,
+      "sha256": "85b2e582ed8f70c9e8de15b9ab187aa6a4cd4f63cce564f4922a314911eab252"
+    },
+    {
+      "path": "references/paper_v4_text.txt",
+      "bytes": 120733,
+      "sha256": "6d1db2ce5e3fc2a00c88f09f60638b75e3fc18c801b41daf8f63fec9d5f4fabc"
+    },
+    {
+      "path": "references/paper_version_metadata.html",
+      "bytes": 44106,
+      "sha256": "f49c9726e552203e846e23b2408970e4ec404d7d032ac32effaeb5a9cfce793a"
+    },
+    {
+      "path": "references/raw_g1/LICENSE",
+      "bytes": 1596,
+      "sha256": "b7301c8023df98434b61ae4c6730ffc0a13c9b7764ed166dbcfad0131177ba71"
+    },
+    {
+      "path": "references/raw_g1/dance1_subject1.csv",
+      "bytes": 1348661,
+      "sha256": "e2a369e92e5ad076c5acffff7bce53157a0e6cd9e7e9f6a08dadfb1eb2928d8f"
+    },
+    {
+      "path": "references/raw_g1/run1_subject2.csv",
+      "bytes": 2445458,
+      "sha256": "ec02af4447a62214a6fec6afff60c75d0ecc8f80f8fb45e3cd4119fed9ceac8d"
+    },
+    {
+      "path": "references/raw_g1/walk1_subject1.csv",
+      "bytes": 2670866,
+      "sha256": "68c7887438e94f1f3d9ebacd3a8ce59251a22c7b05129a0f5d7cacaedc48c28d"
+    },
+    {
+      "path": "references/raw_g1/walk2_subject1.csv",
+      "bytes": 2435737,
+      "sha256": "51cf310f14ecbb8be1f41ea09345df0c89024ff884fb9ab881cac339f820c787"
+    },
+    {
+      "path": "references/raw_g1_manifest.json",
+      "bytes": 2795,
+      "sha256": "376f72f210f215929ea7031c424b0ddf5bc095cbaff9a14639726515b45000b6"
+    },
+    {
+      "path": "references/robot_asset_headers.json",
+      "bytes": 800,
+      "sha256": "1f59b827cf4df92c88affddeca10fea7a8d3123acad69443c87748ad6092ba26"
+    },
+    {
+      "path": "references/shared_conversation.md",
+      "bytes": 15729,
+      "sha256": "490e1e143673f52ec33b9bea405932107442654f4ee4be5fa30fb4dc1bcd44d1"
+    },
+    {
+      "path": "references/zenodo_record.json",
+      "bytes": 10088,
+      "sha256": "0c158d994fd20622e3a496eb8ea931b4e3a523938b1f76cd0d27725a6af3442f"
+    }
+  ]
+}

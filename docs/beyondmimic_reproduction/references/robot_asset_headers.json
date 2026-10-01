@@ -1,0 +1,20 @@
+{
+  "Content-Type": "application/x-tar",
+  "X-GUploader-UploadID": "AP6rU81iwbnm7dQJ0JwI6psNlPqQYrfk_ATRimcHaeDgweY-KBZRK9jOgEu72pEJtSPsfAJK",
+  "Expires": "Thu, 01 Oct 2026 06:25:55 GMT",
+  "Date": "Thu, 01 Oct 2026 05:25:55 GMT",
+  "Cache-Control": "public, max-age=3600",
+  "Last-Modified": "Wed, 11 Jun 2025 03:37:50 GMT",
+  "ETag": "\"ff0092b7de7e927bec293a53bae6105d\"",
+  "x-goog-generation": "1749613070556521",
+  "x-goog-metageneration": "1",
+  "x-goog-stored-content-encoding": "identity",
+  "x-goog-stored-content-length": "55579791",
+  "x-goog-hash": "crc32c=R7WPTg==",
+  "x-goog-storage-class": "STANDARD",
+  "Accept-Ranges": "bytes",
+  "Content-Length": "55579791",
+  "Server": "UploadServer",
+  "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+  "Connection": "close"
+}

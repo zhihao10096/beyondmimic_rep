@@ -1,0 +1,56 @@
+schema_version: beyondmimic-resource-design-v1
+status: profiling_start_points_not_measured_capacity
+
+local_16gb:
+  gpu: RTX_4070_Ti_SUPER
+  simulator_env_start: 1
+  simulator_env_second_gate: 32
+  teacher_num_envs_start: 256
+  collector_num_envs_start: 64
+  vae_microbatch: 256
+  vae_gradient_accumulation: 15
+  diffusion_microbatch: 64
+  diffusion_gradient_accumulation: 8
+  diffusion_world_size: 1
+  diffusion_global_batch: 512
+  initial_precision: fp32
+  optional_precision_after_validation: bf16
+  train_and_simultaneously_simulate: false
+
+server_teacher_collection:
+  gpu_count: 6
+  gpu_each: RTX_4090_24gb
+  jobs_per_gpu_initial: 1
+  task_parallelism: independent_motion_jobs
+  teacher_env_profile_candidates: [512, 1024, 2048, 4096]
+  collector_env_profile_candidates: [128, 256, 512]
+  source_and_student_checkpoint_frozen_per_round: true
+
+server_vae_single_gpu:
+  world_size: 1
+  microbatch_start: 512
+  gradient_accumulation: 15
+  effective_batch_start: 7680
+  batch_size_is_engineering_choice: true
+
+server_diffusion_paper_batch:
+  world_size: 4
+  local_microbatch: 128
+  gradient_accumulation: 1
+  global_batch: 512
+  remaining_gpu_count: 2
+  checkpoint_write_rank: 0
+  initial_precision: fp32
+  optional_precision_after_validation: bf16
+
+server_connection:
+  host: null
+  user: null
+  project_root: null
+  python: null
+  os: null
+  driver: null
+  ram_gb: null
+  free_disk_gb: null
+  job_scheduler: null
+  credential_note: do_not_store_passwords_or_private_keys_in_this_file

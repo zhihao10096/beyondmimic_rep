@@ -1,0 +1,8 @@
+references/repos/
+references/raw_g1/
+references/paper_v4.html
+references/paper_abs.html
+references/paper_version_metadata.html
+references/paper_v4_text.txt
+references/*__pycache__/
+__pycache__/

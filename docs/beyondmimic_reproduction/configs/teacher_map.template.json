@@ -1,0 +1,53 @@
+{
+  "schema_version": "beyondmimic-teacher-map-design-v1",
+  "status": "template_no_trained_teachers",
+  "data_root": "data/reproduction",
+  "artifact_root": "artifacts/reproduction",
+  "default_task": "Tracking-Flat-G1-Low-Freq-v0",
+  "robot": "official_g1_29dof",
+  "frequency_hz": 25,
+  "teachers": [
+    {
+      "motion_id": "walk1_subject1",
+      "status": "not_trained",
+      "motion_path": "motions_25hz/walk1_subject1.npz",
+      "motion_sha256": null,
+      "checkpoint_path": null,
+      "checkpoint_sha256": null,
+      "agent_config_path": null,
+      "env_config_path": null,
+      "normalizer_source": "same_teacher_checkpoint",
+      "robot_contract_sha256": null,
+      "observation_contract_sha256": null,
+      "gate_g1_report_path": null
+    },
+    {
+      "motion_id": "walk2_subject1",
+      "status": "not_trained",
+      "motion_path": "motions_25hz/walk2_subject1.npz",
+      "motion_sha256": null,
+      "checkpoint_path": null,
+      "checkpoint_sha256": null,
+      "agent_config_path": null,
+      "env_config_path": null,
+      "normalizer_source": "same_teacher_checkpoint",
+      "robot_contract_sha256": null,
+      "observation_contract_sha256": null,
+      "gate_g1_report_path": null
+    },
+    {
+      "motion_id": "run1_subject2",
+      "status": "not_trained",
+      "motion_path": "motions_25hz/run1_subject2.npz",
+      "motion_sha256": null,
+      "checkpoint_path": null,
+      "checkpoint_sha256": null,
+      "agent_config_path": null,
+      "env_config_path": null,
+      "normalizer_source": "same_teacher_checkpoint",
+      "robot_contract_sha256": null,
+      "observation_contract_sha256": null,
+      "gate_g1_report_path": null
+    }
+  ]
+}

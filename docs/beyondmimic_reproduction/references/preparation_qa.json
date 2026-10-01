@@ -1,0 +1,13 @@
+{
+  "json_yaml_parse": "passed",
+  "relative_markdown_links": "passed",
+  "downloaded_csv_hashes": "4/4 matched",
+  "original_source_and_scripts_diff": "empty",
+  "reference_files_hashed": 18,
+  "limitations": [
+    "No IsaacSim launch",
+    "No teacher training",
+    "No VAE or diffusion training",
+    "No physical closed-loop result"
+  ]
+}

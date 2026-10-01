@@ -1,0 +1,150 @@
+schema_version: beyondmimic-stage23-design-v1
+status: design_only_not_wired_to_runtime
+paper_url: https://arxiv.org/html/2508.08241v4
+
+paper_explicit:
+  control_hz: 25
+  vae:
+    latent_dim: 32
+    encoder_hidden_dims: [2048, 1024, 512]
+    decoder_hidden_dims: [2048, 1024, 512]
+    activation: ELU
+    learning_rate: 0.0005
+    kl_coefficient: 0.01
+    gradient_accumulation_steps: 15
+  rollout:
+    ou_theta: 0.8
+    ou_mu: 0.0
+    ou_sigma: 0.1
+    ou_discrete_dt: 1.0
+    recorded_prefix_s: 2.5
+    survival_validation_s: 5.0
+    target_reference_frame_coverage: 100
+  diffusion:
+    past_steps: 4
+    future_steps: 16
+    embedding_dim: 512
+    attention_heads: 8
+    transformer_layers: 6
+    backbone: TransformerEncoder
+    prediction_type: x0
+    denoising_steps: 20
+    per_state_and_latent_per_token_noise: true
+    batch_size_global: 512
+    epochs: 1000
+    learning_rate: 0.0001
+    weight_decay: 0.001
+    lr_scheduler: cosine
+    warmup_optimizer_updates: 10000
+    ema_power: 0.75
+    ema_max_decay: 0.9999
+    root_emphasis_coefficient: 6.0
+
+engineering_choices:
+  physics_dt: 0.005
+  decimation: 8
+  robot: official_g1_29dof
+  tracking_anchor_body: torso_link
+  diffusion_root_body: pelvis
+  control_state_time: pre_action
+  quaternion_internal: wxyz
+  quaternion_csv: xyzw
+  rot6d_order: first_two_columns_row_major_3x2
+  target_body_names:
+    - pelvis
+    - left_hip_roll_link
+    - left_knee_link
+    - left_ankle_roll_link
+    - right_hip_roll_link
+    - right_knee_link
+    - right_ankle_roll_link
+    - torso_link
+    - left_shoulder_roll_link
+    - left_elbow_link
+    - left_wrist_yaw_link
+    - right_shoulder_roll_link
+    - right_elbow_link
+    - right_wrist_yaw_link
+  vae:
+    encoder_input_dim: 67
+    proprio_input_dim: 96
+    decoder_total_input_dim: 128
+    action_dim: 29
+    current_joint_position: relative_to_runtime_default
+    reference_joint_position: absolute
+    anchor_error_frame: robot_anchor_body
+    previous_action: previous_applied_normalized_action
+    teacher_label: frozen_actor_mean_with_original_normalizer
+    kl_reduction: mean_batch_sum_latent
+    reconstruction_reduction: mean_batch_mean_joint
+    optimizer: AdamW
+    weight_decay: 0.0
+    kl_warmup: false
+    gradient_clip_norm: 1.0
+    input_normalizer_source: d0_train_partition
+    freeze_input_normalizer: true
+    rollout_latent: posterior_mean
+    long_run_update_budget: null
+  rollout:
+    recorded_ticks: 63
+    survival_ticks: 125
+    ou_during_validation_tail: true
+    discard_failed_episode_prefix: true
+    stored_latent: exact_latent_used_by_decoder
+    default_joint_pos_nominal_and_runtime_saved: true
+    mirror_latent_rule: reencode_reference_and_validate_or_collect_new_rollout
+  state:
+    representation: character_yaw_hybrid_supplement_s3
+    root_orientation_dim: 6
+    root_feature_dim: 15
+    body_feature_dim: 84
+    raw_state_dim: 99
+    root_velocity_subtract_current: true
+    current_frame_context_for_physical_recovery: [root_pos_w, root_yaw_w, root_lin_vel_w]
+    normalization_order: raw_state_standardize_then_project
+    projection_gaussian_rows: 64
+    projection_b_root: 6.0
+    projection_b_other: 1.0
+    projection_seed: 7
+    projected_state_dim: 163
+    latent_normalization: train_mean_std_separate
+    token_dim: 195
+  diffusion:
+    include_current: true
+    current_index: 4
+    sequence_length: 21
+    future_horizon_s: 0.64
+    ffn_dim: 2048
+    activation: GELU
+    dropout: 0.0
+    positional_embedding: learned
+    causal_attention: false
+    known_feature_mask_conditioning: explicit
+    clean_noise_index: 0
+    noisy_indices: [1, 20]
+    alpha_bar_array_length: 21
+    alpha_bar_at_clean: 1.0
+    noise_schedule: cosine
+    sampler_primary: x0_ddpm_posterior
+    sampler_ablation: ddim_20_deterministic
+    observed_history_state_and_latent_clamped: true
+    observed_current_state_clamped: true
+    current_latent_generated: true
+    mimic_inference_mask_during_training: true
+    training_loss_reduction: mean_over_valid_generated_features
+    known_feature_training_loss: excluded
+    report_state_latent_group_means: true
+  guidance:
+    cost_space: physical_units_after_inverse_projection_and_normalization
+    gradient_path: cost_to_predicted_x0_to_noisy_state_latent
+    update: posterior_mean_negative_cost_gradient_variance_scaled
+    waypoint_distance_weight_detach: true
+    yaw_rate_cost: separate_engineering_extension
+    body_collision_spheres: null
+    sdf_delta: null
+    tuned_weights: null
+  runtime:
+    initial_inference: synchronous
+    final_reference_free: true
+    async_requires_timestamp_and_tick_alignment: true
+    tensor_rt_requires_guidance_gradient_validation: true
