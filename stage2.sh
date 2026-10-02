@@ -39,6 +39,9 @@
 # python scripts/stage2/workflow.py train-dagger --student logs/stage2/cvae_d0/best.pt --round 1
 # python scripts/stage2/workflow.py evaluate --student logs/stage2/cvae_d1/best.pt
 # 若未达到G2，重复第4—5步：student换为上一轮best.pt，round改为2、3……；旧轮次数据自动保留。
+# 也可使用自动脚本，从现有D1开始继续D2、D3……，直到全部motion通过G2 clean：
+# bash dagger.sh
+# 说明见docs/beyondmimic_reproduction/14_自动DAgger.md。
 
 # 6. G2 clean合格后，补做完整动作扰动回放；独立报告。
 # python scripts/stage2/workflow.py evaluate --student logs/stage2/cvae_d1/best.pt --perturbed

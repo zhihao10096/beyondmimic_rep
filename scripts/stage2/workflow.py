@@ -78,8 +78,17 @@ def execute(command, dry_run):
 
 
 def run_directory(data_root, motion, round_id, split):
-    seed = (100 if split == "train" else 200) + round_id
+    seed = collector_seed(round_id, split)
     return path(data_root) / motion / f"d{round_id}_{split}_s{seed}"
+
+
+def collector_seed(round_id, split):
+    if round_id < 0 or split not in ("train", "val"):
+        raise ValueError("Invalid collector round or split")
+    # Keep existing d0..d99 paths; unbounded automation must never cross train/val seeds.
+    if round_id < 100:
+        return (100 if split == "train" else 200) + round_id
+    return 1000 + 2 * round_id + (split == "val")
 
 
 def verify_data(directory, row, round_id, split):
@@ -89,7 +98,7 @@ def verify_data(directory, row, round_id, split):
         raise ValueError(f"Incomplete or debug data: {directory}")
     if (manifest["contract_hash"] != CONTRACT_HASH or meta["motion_id"] != row["motion_id"]
             or meta["round"] != round_id or meta["split"] != split
-            or meta["collector_seed"] != (100 if split == "train" else 200) + round_id
+            or meta["collector_seed"] != collector_seed(round_id, split)
             or meta["mapping_hash"] != row["mapping_hash"]
             or meta["motion_sha256"] != row["motion_sha256"]
             or meta["teacher"]["checkpoint_sha256"] != row["checkpoint_sha256"]
@@ -186,6 +195,7 @@ def main():
             p.add_argument("--student", help="Previous CVAE checkpoint; starts a new dataset round")
         if name == "evaluate":
             p.add_argument("--perturbed", action="store_true", help="Full-motion perturbation diagnostic, separate from clean G2")
+            p.add_argument("--summary_output", help="Also write summary to this fresh path for automation")
         if name == "add-teacher":
             p.add_argument("--motion", required=True)
             p.add_argument("--teacher_root", default="logs/rsl_rl/g1_flat")
@@ -196,6 +206,7 @@ def main():
         parser.error("steps and val_steps must be positive")
     registry_path = path(args.registry)
     registry = json.loads(registry_path.read_text())
+    registry_sha256 = file_hash(registry_path)
     if registry["contract_hash"] != CONTRACT_HASH:
         raise ValueError("Registry contract mismatch")
     if args.action == "add-teacher":
@@ -242,7 +253,7 @@ def main():
                 if output.exists() and not args.dry_run:
                     raise ValueError(f"Output exists: {output}; choose a new --data_root or round")
                 command = rollout(row) + ["--mode", "collect", "--round", str(round_id), "--split", split,
-                           "--seed", str((100 if split == "train" else 200) + round_id),
+                           "--seed", str(collector_seed(round_id, split)),
                            "--num_envs", str(args.num_envs), "--steps", str(args.steps if split == "train" else args.val_steps),
                            "--output", str(output), "--device", args.device, "--headless", "--fast_exit"]
                 if round_id:
@@ -267,6 +278,8 @@ def main():
                 command += [f"--{option}", str(getattr(args, option))]
         execute(command, args.dry_run)
     elif args.action == "evaluate":
+        if args.summary_output and path(args.summary_output).exists() and not args.dry_run:
+            raise ValueError(f"Evaluation summary output exists: {args.summary_output}")
         output = ROOT / "artifacts/stage2/student_evaluation" / f"{path(args.student).parent.name}_{stamp()}"
         results = []
         for row in rows:
@@ -280,12 +293,17 @@ def main():
             if not args.dry_run:
                 r = json.loads(report.read_text())
                 results.append({"motion_id": row["motion_id"], "report": str(report), "successes": r["successes"],
+                                "report_sha256": file_hash(report),
                                 "trials": r["trials"], "body_error_mean_m": r["body_error_mean_m"],
                                 "passed_g2_clean": r.get("passed_g2_clean")})
         if not args.dry_run:
-            atomic_json(output / "summary.json", {"student": str(path(args.student)), "student_sha256": file_hash(path(args.student)),
+            summary = {"student": str(path(args.student)), "student_sha256": file_hash(path(args.student)),
+                        "registry_sha256": registry_sha256,
                         "perturbed": args.perturbed, "results": results,
-                        "all_passed_g2_clean": None if args.perturbed else all(r["passed_g2_clean"] is True for r in results)})
+                        "all_passed_g2_clean": None if args.perturbed else all(r["passed_g2_clean"] is True for r in results)}
+            atomic_json(output / "summary.json", summary)
+            if args.summary_output:
+                atomic_json(path(args.summary_output), summary)
             print(json.dumps(results, ensure_ascii=False, indent=2))
             print(f"Student evaluation summary: {output / 'summary.json'}")
 
