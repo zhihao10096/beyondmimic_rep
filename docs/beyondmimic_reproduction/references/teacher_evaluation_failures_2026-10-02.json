@@ -1,0 +1,677 @@
+[
+  {
+    "motion_id": "run1_subject2",
+    "profile": "full_clean",
+    "trial": 0,
+    "elapsed_s": 194.56,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4863,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "run1_subject2",
+    "profile": "full_clean",
+    "trial": 12,
+    "elapsed_s": 72.8,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 1819,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance1_subject1",
+    "profile": "random_perturbed_10s",
+    "trial": 14,
+    "elapsed_s": 8.04,
+    "initial_reference_frame": 1470,
+    "last_queried_reference_frame": 1670,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "sprint1_subject2",
+    "profile": "full_clean",
+    "trial": 0,
+    "elapsed_s": 21.72,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 542,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "sprint1_subject2",
+    "profile": "full_clean",
+    "trial": 16,
+    "elapsed_s": 181.04,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4525,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "sprint1_subject2",
+    "profile": "random_perturbed_10s",
+    "trial": 11,
+    "elapsed_s": 0.96,
+    "initial_reference_frame": 6430,
+    "last_queried_reference_frame": 6453,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fight1_subject2",
+    "profile": "random_perturbed_10s",
+    "trial": 4,
+    "elapsed_s": 0.56,
+    "initial_reference_frame": 4816,
+    "last_queried_reference_frame": 4829,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fightAndSports1_subject1",
+    "profile": "full_clean",
+    "trial": 7,
+    "elapsed_s": 4.6,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 114,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fightAndSports1_subject1",
+    "profile": "full_clean",
+    "trial": 10,
+    "elapsed_s": 4.64,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 115,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 0,
+    "elapsed_s": 193.96,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4848,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 1,
+    "elapsed_s": 193.92,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4847,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 2,
+    "elapsed_s": 193.96,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4848,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 3,
+    "elapsed_s": 193.92,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4847,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 4,
+    "elapsed_s": 193.96,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4848,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 5,
+    "elapsed_s": 193.96,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4848,
+    "termination_terms": [
+      "anchor_pos",
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 6,
+    "elapsed_s": 193.96,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4848,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 7,
+    "elapsed_s": 193.92,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4847,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 8,
+    "elapsed_s": 193.92,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4847,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 9,
+    "elapsed_s": 193.96,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4848,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 10,
+    "elapsed_s": 193.96,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4848,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 11,
+    "elapsed_s": 193.96,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4848,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 12,
+    "elapsed_s": 193.96,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4848,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 13,
+    "elapsed_s": 193.96,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4848,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 14,
+    "elapsed_s": 193.92,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4847,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 15,
+    "elapsed_s": 193.96,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4848,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 16,
+    "elapsed_s": 193.96,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4848,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 17,
+    "elapsed_s": 193.96,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4848,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 18,
+    "elapsed_s": 193.96,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4848,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "full_clean",
+    "trial": 19,
+    "elapsed_s": 193.96,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 4848,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "dance2_subject1",
+    "profile": "random_perturbed_10s",
+    "trial": 4,
+    "elapsed_s": 2.6,
+    "initial_reference_frame": 4784,
+    "last_queried_reference_frame": 4848,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp1_subject1",
+    "profile": "full_clean",
+    "trial": 0,
+    "elapsed_s": 6.36,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 158,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp1_subject1",
+    "profile": "full_clean",
+    "trial": 4,
+    "elapsed_s": 5.68,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 141,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp1_subject1",
+    "profile": "full_clean",
+    "trial": 7,
+    "elapsed_s": 2.12,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 52,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp1_subject1",
+    "profile": "full_clean",
+    "trial": 14,
+    "elapsed_s": 10.8,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 269,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 0,
+    "elapsed_s": 142.36,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3558,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 1,
+    "elapsed_s": 142.36,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3558,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 2,
+    "elapsed_s": 142.36,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3558,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 3,
+    "elapsed_s": 142.36,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3558,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 4,
+    "elapsed_s": 142.36,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3558,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 5,
+    "elapsed_s": 142.32,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3557,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 6,
+    "elapsed_s": 34.32,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 857,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 7,
+    "elapsed_s": 142.36,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3558,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 8,
+    "elapsed_s": 142.36,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3558,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 9,
+    "elapsed_s": 142.36,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3558,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 10,
+    "elapsed_s": 142.36,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3558,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 11,
+    "elapsed_s": 142.32,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3557,
+    "termination_terms": [
+      "anchor_pos",
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 12,
+    "elapsed_s": 142.36,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3558,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 13,
+    "elapsed_s": 142.32,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3557,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 14,
+    "elapsed_s": 142.32,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3557,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 15,
+    "elapsed_s": 142.36,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3558,
+    "termination_terms": [
+      "anchor_pos",
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 16,
+    "elapsed_s": 142.36,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3558,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 17,
+    "elapsed_s": 142.36,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3558,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 18,
+    "elapsed_s": 142.36,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3558,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "full_clean",
+    "trial": 19,
+    "elapsed_s": 135.04,
+    "initial_reference_frame": 0,
+    "last_queried_reference_frame": 3375,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "random_perturbed_10s",
+    "trial": 0,
+    "elapsed_s": 8.4,
+    "initial_reference_frame": 3349,
+    "last_queried_reference_frame": 3558,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "random_perturbed_10s",
+    "trial": 6,
+    "elapsed_s": 0.64,
+    "initial_reference_frame": 1627,
+    "last_queried_reference_frame": 1642,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "random_perturbed_10s",
+    "trial": 8,
+    "elapsed_s": 7.36,
+    "initial_reference_frame": 3376,
+    "last_queried_reference_frame": 3559,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "random_perturbed_10s",
+    "trial": 10,
+    "elapsed_s": 9.08,
+    "initial_reference_frame": 3332,
+    "last_queried_reference_frame": 3558,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "random_perturbed_10s",
+    "trial": 13,
+    "elapsed_s": 1.16,
+    "initial_reference_frame": 2532,
+    "last_queried_reference_frame": 2560,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "random_perturbed_10s",
+    "trial": 15,
+    "elapsed_s": 8.44,
+    "initial_reference_frame": 2820,
+    "last_queried_reference_frame": 3030,
+    "termination_terms": [
+      "anchor_pos",
+      "ee_body_pos"
+    ]
+  },
+  {
+    "motion_id": "fallAndGetUp2_subject2",
+    "profile": "random_perturbed_10s",
+    "trial": 16,
+    "elapsed_s": 6.36,
+    "initial_reference_frame": 1164,
+    "last_queried_reference_frame": 1322,
+    "termination_terms": [
+      "ee_body_pos"
+    ]
+  }
+]

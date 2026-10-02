@@ -1,5 +1,10 @@
 schema_version: beyondmimic-stage23-design-v1
-status: design_only_not_wired_to_runtime
+status: stage2_runtime_implemented_stage3_design_only
+runtime_entrypoints:
+  stage2_collection_and_evaluation: scripts/stage2/rollout.py
+  stage2_cvae_training: scripts/stage2/train.py
+  stage2_decoder_export: scripts/stage2/export.py
+  commands: stage2.sh
 paper_url: https://arxiv.org/html/2508.08241v4
 
 paper_explicit:

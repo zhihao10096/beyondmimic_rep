@@ -1,0 +1,165 @@
+{
+  "date": "2026-10-01",
+  "status": "stage2_code_and_real_debug_pipeline_verified_not_G2_reproduction",
+  "runtime_versions": {
+    "torch": "2.5.1",
+    "numpy": "1.26.4",
+    "isaaclab": "2.1.0",
+    "isaacsim": "4.5.0.0",
+    "rsl-rl-lib": "2.3.3"
+  },
+  "unit_tests": {
+    "count": 11,
+    "passed": true,
+    "command": "python -m unittest discover -s tests -p test_stage2.py -v"
+  },
+  "syntax_and_shell": {
+    "compileall": true,
+    "bash_n_stage2_sh": true,
+    "all_execution_commands_commented": true,
+    "git_diff_check": true
+  },
+  "adapter_report": "stage2_adapter_smoke.json",
+  "real_teacher": {
+    "checkpoint": "logs/rsl_rl/g1_flat/2026-10-01_15-41-59_walk1_subject1_default/model_3000.pt",
+    "checkpoint_sha256": "935344f9acbabb579c5c0b14a4bdb503301a8d2e4cef31e918240c79e08709c3",
+    "original_RSL_actor_and_normalizer_max_difference": 0.0,
+    "full_motion_trials": 20,
+    "successes": 17,
+    "success_rate": 0.85,
+    "body_error_mean_m": 0.04475487396121025,
+    "passed_g1": false,
+    "report": "stage2_walk1_teacher_3000_gate.json"
+  },
+  "real_data_runs": [
+    {
+      "path": "data/stage2_smoke/walk1_d0_train_s100/manifest.json",
+      "manifest_sha256": "b41cdea878c50274460c54005f163177e6c0b50526ed508500dc9b6b49cdd8e9",
+      "complete": true,
+      "rows": 256,
+      "split": "train",
+      "seed": 100,
+      "round": 0,
+      "teacher_qualified": false
+    },
+    {
+      "path": "data/stage2_smoke/walk1_d0_val_s200/manifest.json",
+      "manifest_sha256": "2f50d852cca5389ad802535719ab0388f319f827cafee08e74e97eb57fbdc698",
+      "complete": true,
+      "rows": 128,
+      "split": "val",
+      "seed": 200,
+      "round": 0,
+      "teacher_qualified": false
+    },
+    {
+      "path": "data/stage2_smoke/walk1_d1_train_s102/manifest.json",
+      "manifest_sha256": "c448788e2d59098a77479e99a744b5f33badd8ca96cc278ec341b33e19181eea",
+      "complete": true,
+      "rows": 256,
+      "split": "train",
+      "seed": 102,
+      "round": 1,
+      "teacher_qualified": false
+    }
+  ],
+  "real_training": {
+    "default_full_size_architecture": [
+      2048,
+      1024,
+      512
+    ],
+    "latent_dim": 32,
+    "total_debug_optimizer_updates": 2,
+    "normalizer_frozen_across_new_round_exact": true,
+    "d0": {
+      "epoch": 0,
+      "step": 1,
+      "train": [
+        2.8383129835128784,
+        2.836529552936554,
+        0.17834027856588364
+      ],
+      "validation": {
+        "loss": 1.5012946426868439,
+        "mse": 1.4923467338085175,
+        "kl": 0.8947896212339401
+      },
+      "gradient_clips": 1
+    },
+    "d1": {
+      "epoch": 0,
+      "step": 2,
+      "train": [
+        1.3488862812519073,
+        1.3045797049999237,
+        4.430655598640442
+      ],
+      "validation": {
+        "loss": 1.234274536371231,
+        "mse": 1.221915364265442,
+        "kl": 1.235914707183838
+      },
+      "gradient_clips": 1
+    },
+    "model": "logs/stage2/smoke_cvae_d1/last.pt",
+    "allow_unqualified": true
+  },
+  "real_dagger_audit": {
+    "rows": 256,
+    "resets": 18,
+    "command_resamples": 18,
+    "continuous_transitions_exact": 234,
+    "teacher_requery_max_error": 1.9073486328125e-06,
+    "decoder_requery_max_error": 5.364418029785156e-07,
+    "student_teacher_action_mse": 0.922351598739624,
+    "pd_formula_verified": true,
+    "mean_latent_stored_exactly": true,
+    "qualified": false
+  },
+  "decoder_export_and_reload": {
+    "passed": true,
+    "path": "artifacts/stage2_smoke_decoder.pt",
+    "source_model": "logs/stage2/smoke_cvae_d0/best.pt",
+    "reference_free_inputs": [
+      32,
+      96
+    ]
+  },
+  "student_physics": {
+    "report": "stage2_student_smoke_eval.json",
+    "trials": 2,
+    "successes": 0,
+    "purpose": "one_update_interface_test_not_skill_training"
+  },
+  "remaining": [
+    "qualify_more_trained_teachers_G1",
+    "formal_multimotion_D0",
+    "CVAE_training_and_iterative_DAgger",
+    "all_admitted_motions_G2_clean_and_perturbed",
+    "mirror_FK_validation_before_optional_augmentation"
+  ],
+  "source_sha256": {
+    "source/whole_body_tracking/beyondmimic_stage2/data.py": "a172d2ed9d246d14f5c64fa548550688fc1919db304c2f14bc436ead6fbc4c8c",
+    "source/whole_body_tracking/beyondmimic_stage2/__init__.py": "169c7bbafe3e1ea929719829e87eb983c71ffd3ea9b4c0710b1809830b489d44",
+    "source/whole_body_tracking/beyondmimic_stage2/core.py": "2f68a2f078b7a3addefef86a6c5635cf0f564499f8983c290502c46946ff62e0",
+    "source/whole_body_tracking/beyondmimic_stage2/isaac.py": "506ab0b954d2f3e054a06c8a8476088b3ee679218858b1240f9994d65ea91419",
+    "source/whole_body_tracking/beyondmimic_stage2/teacher.py": "ed470c1bb75f3de5f30612c842915d0bcf492452a0fb1f35e91352a69810b269",
+    "scripts/stage2/train.py": "89f375d8212b4ed306a145fd0855f0328620950fb83abd4c0592ef3166d575bb",
+    "scripts/stage2/rollout.py": "da8ad49e481971602298499d8a142fc8686a5d27db41e35e3d686ec3d9f0e804",
+    "scripts/stage2/export.py": "46a0cff4cd27dfffa763272d28bf1a802f410e01c0ce06e647aa7939eae4e739",
+    "scripts/stage2/_bootstrap.py": "5aa3c42ec5221d4b3bf559c174f280bef01d986272a169ac66be266d02e8c178",
+    "tests/test_stage2.py": "db20401b44b20cdd3e137d31fc57fc8031baf4d7d8552ff89bace4db98c93042",
+    "stage2.sh": "0ab12cb97398c68e6f12883c2f944e4c4bb1cf5e8795e8839ef7688bee2bae4c"
+  },
+  "adapter_checks": [
+    "clean_teacher160_exact",
+    "reference67",
+    "proprio96",
+    "pre_and_post_physics",
+    "link_origin_velocities",
+    "full_motion_end_no_teleport",
+    "resample_generation",
+    "random_phase_reset"
+  ]
+}

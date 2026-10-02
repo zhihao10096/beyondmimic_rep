@@ -1,0 +1,79 @@
+{
+  "motion_id": "dance2_subject1",
+  "motion_sha256": "1d0d5656f278fdcdc89270ca381307de0f743b865e006df191767dc250722fb2",
+  "scope": "Reference-only kinematic probe near phase0 evaluation failures; not a robot rollout or collision/feasibility/causality test. Body origins are not collision surfaces.",
+  "source": "data/reproduction/motions_25hz/dance2_subject1.npz",
+  "fps": 25,
+  "samples": [
+    {
+      "time_s": 192,
+      "reference_frame": 4800,
+      "root_link_origin_height_m": 0.7418348789215088,
+      "minimum_body_link_origin_height_m": 0.04747682064771652,
+      "maximum_body_origin_step_m": 0.08403080701828003,
+      "maximum_joint_step_rad": 0.23386061191558838
+    },
+    {
+      "time_s": 193,
+      "reference_frame": 4825,
+      "root_link_origin_height_m": 0.7641710638999939,
+      "minimum_body_link_origin_height_m": 0.04418735206127167,
+      "maximum_body_origin_step_m": 0.07429742813110352,
+      "maximum_joint_step_rad": 0.24540996551513672
+    },
+    {
+      "time_s": 193.8,
+      "reference_frame": 4845,
+      "root_link_origin_height_m": 0.8518725037574768,
+      "minimum_body_link_origin_height_m": 0.4291000962257385,
+      "maximum_body_origin_step_m": 0.1783946007490158,
+      "maximum_joint_step_rad": 0.49286532402038574
+    },
+    {
+      "time_s": 193.88,
+      "reference_frame": 4847,
+      "root_link_origin_height_m": 0.8470970392227173,
+      "minimum_body_link_origin_height_m": 0.447503924369812,
+      "maximum_body_origin_step_m": 0.14604075253009796,
+      "maximum_joint_step_rad": 0.24006009101867676
+    },
+    {
+      "time_s": 193.92,
+      "reference_frame": 4848,
+      "root_link_origin_height_m": 0.842063844203949,
+      "minimum_body_link_origin_height_m": 0.420305073261261,
+      "maximum_body_origin_step_m": 0.16808180510997772,
+      "maximum_joint_step_rad": 0.26493290066719055
+    },
+    {
+      "time_s": 193.96,
+      "reference_frame": 4849,
+      "root_link_origin_height_m": 0.8355024456977844,
+      "minimum_body_link_origin_height_m": 0.41195282340049744,
+      "maximum_body_origin_step_m": 0.17863218486309052,
+      "maximum_joint_step_rad": 0.2575974464416504
+    },
+    {
+      "time_s": 194,
+      "reference_frame": 4850,
+      "root_link_origin_height_m": 0.8270195722579956,
+      "minimum_body_link_origin_height_m": 0.4071594476699829,
+      "maximum_body_origin_step_m": 0.14284411072731018,
+      "maximum_joint_step_rad": 0.3094068169593811
+    },
+    {
+      "time_s": 195,
+      "reference_frame": 4875,
+      "root_link_origin_height_m": 0.61058509349823,
+      "minimum_body_link_origin_height_m": 0.08704762160778046,
+      "maximum_body_origin_step_m": 0.12447888404130936,
+      "maximum_joint_step_rad": 0.3620014488697052
+    }
+  ],
+  "window_192_194_8s": {
+    "maximum_body_origin_step_m": 0.23759637773036957,
+    "step_start_time_s": 193.44,
+    "maximum_joint_step_rad": 0.533449649810791,
+    "joint_step_start_time_s": 193.72
+  }
+}

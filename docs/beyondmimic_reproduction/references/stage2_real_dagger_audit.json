@@ -1,0 +1,12 @@
+{
+  "rows": 256,
+  "resets": 18,
+  "command_resamples": 18,
+  "continuous_transitions_exact": 234,
+  "teacher_requery_max_error": 1.9073486328125e-06,
+  "decoder_requery_max_error": 5.364418029785156e-07,
+  "student_teacher_action_mse": 0.922351598739624,
+  "pd_formula_verified": true,
+  "mean_latent_stored_exactly": true,
+  "qualified": false
+}

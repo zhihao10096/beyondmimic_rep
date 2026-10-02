@@ -39,3 +39,7 @@ _build
 *.zarr
 
 artifacts/
+
+# Generated stage2 physics rollouts (keep provenance summaries in docs/references).
+data/stage2/
+data/stage2_smoke/

@@ -1,0 +1,4589 @@
+{
+  "started_at": "2026-10-02T09:50:51.905418+08:00",
+  "contract_hash": "9fe4bc64ef8ad98fb69f04e7ebf5c514b935bb4698a61499ea47da59e5378016",
+  "runtime_versions": {
+    "torch": "2.5.1",
+    "numpy": "1.26.4",
+    "isaaclab": "2.1.0",
+    "isaacsim": "4.5.0.0",
+    "rsl-rl-lib": "2.3.3"
+  },
+  "source_sha256": {
+    "source/whole_body_tracking/beyondmimic_stage2/data.py": "a172d2ed9d246d14f5c64fa548550688fc1919db304c2f14bc436ead6fbc4c8c",
+    "source/whole_body_tracking/beyondmimic_stage2/__init__.py": "169c7bbafe3e1ea929719829e87eb983c71ffd3ea9b4c0710b1809830b489d44",
+    "source/whole_body_tracking/beyondmimic_stage2/core.py": "2f68a2f078b7a3addefef86a6c5635cf0f564499f8983c290502c46946ff62e0",
+    "source/whole_body_tracking/beyondmimic_stage2/isaac.py": "af1f1bf6a9c6bd0bb5ef1a4df890226cef42c295a3d3610659a3b17332db3913",
+    "source/whole_body_tracking/beyondmimic_stage2/teacher.py": "ed470c1bb75f3de5f30612c842915d0bcf492452a0fb1f35e91352a69810b269",
+    "scripts/stage2/rollout.py": "2ff34bcadef59f33a999fad0049a13471fbd1b633bd9854f145e022aab568d4a",
+    "scripts/stage2/evaluate_teachers.py": "451c255b94ee5d8af28e714b11476e79ad7ecfb936afab20c51c9064767095aa"
+  },
+  "profiles": {
+    "full_clean": {
+      "seed": 300,
+      "trials": 20
+    },
+    "random_perturbed_10s": {
+      "seed": 400,
+      "trials": 20,
+      "horizon_ticks": 250
+    }
+  },
+  "candidates": [
+    {
+      "motion_id": "walk1_subject1",
+      "motion_file": "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/walk1_subject1.npz",
+      "motion_sha256": "575f8a84f2a8cd4f1389f376d9d0941321f3be58f17413e53fd5c85b5d06d648",
+      "motion_frames": 6533,
+      "duration_s": 261.32,
+      "checkpoint": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-41-59_walk1_subject1_default/model_29999.pt",
+      "iteration": 29999,
+      "agent_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-41-59_walk1_subject1_default/params/agent.yaml",
+      "env_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-41-59_walk1_subject1_default/params/env.yaml",
+      "env_yaml_sha256": "93c9c32d95d798d475f84ef52c83cc2318f133edd14df601566c840e07316b63",
+      "teacher": {
+        "checkpoint_sha256": "30327b5529aee6fbda56cd764675cc5aa92a710c88d9fa3934eb73bc04de6cd5",
+        "agent_sha256": "e86e9f4e80b03fa10506a0aea1f12b4fdb277e139fd1d838cb81686272c83a06",
+        "empirical_normalization": true,
+        "normalizer_eps": 0.01,
+        "actor_hidden_dims": [
+          512,
+          256,
+          128
+        ],
+        "label": "actor_mean"
+      },
+      "full_clean": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/walk1_subject1.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-41-59_walk1_subject1_default/model_29999.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-41-59_walk1_subject1_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-41-59_walk1_subject1_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "300",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/walk1_subject1_full_clean.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/walk1_subject1_full_clean.log",
+        "successes": 20,
+        "trials": 20,
+        "success_rate": 1.0,
+        "passed_g1": true,
+        "body_error_mean_m": 0.03136996179819107,
+        "trial_ticks": [
+          6533,
+          6533,
+          6533,
+          6533,
+          6533,
+          6533,
+          6533,
+          6533,
+          6533,
+          6533,
+          6533,
+          6533,
+          6533,
+          6533,
+          6533,
+          6533,
+          6533,
+          6533,
+          6533,
+          6533
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.8388698745050667,
+          1.0
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/walk1_subject1_full_clean.json",
+        "report_sha256": "9d59fc0805b0780757879e232ed02315a1160bec0f0e51d02a701e38b3cfa801"
+      },
+      "random_perturbed_10s": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/walk1_subject1.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-41-59_walk1_subject1_default/model_29999.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-41-59_walk1_subject1_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-41-59_walk1_subject1_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "400",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/walk1_subject1_random_perturbed_10s.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test",
+          "--start_phase",
+          "random",
+          "--perturbed",
+          "--evaluation_steps",
+          "250"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/walk1_subject1_random_perturbed_10s.log",
+        "successes": 20,
+        "trials": 20,
+        "success_rate": 1.0,
+        "passed_g1": false,
+        "body_error_mean_m": 0.03322140499949455,
+        "trial_ticks": [
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.8388698745050667,
+          1.0
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/walk1_subject1_random_perturbed_10s.json",
+        "report_sha256": "19d876e3a86a938a8ec09315884dd8d03dd1b455666df3ed6378194c8968a4bc"
+      },
+      "recommendation": "推荐进入正式teacher库"
+    },
+    {
+      "motion_id": "walk2_subject1",
+      "motion_file": "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/walk2_subject1.npz",
+      "motion_sha256": "ef17485a7b254b8da95dadbd3018af4e43a189b9869a2078bb58aa242bf9659f",
+      "motion_frames": 5955,
+      "duration_s": 238.2,
+      "checkpoint": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-42-05_walk2_subject1_default/model_29999.pt",
+      "iteration": 29999,
+      "agent_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-42-05_walk2_subject1_default/params/agent.yaml",
+      "env_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-42-05_walk2_subject1_default/params/env.yaml",
+      "env_yaml_sha256": "90e2817b1547d674de7947c3f1b46e385a78514d255edd6cbb5391217eb78f98",
+      "teacher": {
+        "checkpoint_sha256": "5b8d15cee5cf30f1cc1c0b75bbc37b09869386b8a57ab4fa9c5cc3a3c1cb9566",
+        "agent_sha256": "adb9e44bead315ec8629e87c51131ea3d34a638fec60b045411217db5779ed9d",
+        "empirical_normalization": true,
+        "normalizer_eps": 0.01,
+        "actor_hidden_dims": [
+          512,
+          256,
+          128
+        ],
+        "label": "actor_mean"
+      },
+      "full_clean": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/walk2_subject1.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-42-05_walk2_subject1_default/model_29999.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-42-05_walk2_subject1_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-42-05_walk2_subject1_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "300",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/walk2_subject1_full_clean.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/walk2_subject1_full_clean.log",
+        "successes": 20,
+        "trials": 20,
+        "success_rate": 1.0,
+        "passed_g1": true,
+        "body_error_mean_m": 0.04035351425409317,
+        "trial_ticks": [
+          5955,
+          5955,
+          5955,
+          5955,
+          5955,
+          5955,
+          5955,
+          5955,
+          5955,
+          5955,
+          5955,
+          5955,
+          5955,
+          5955,
+          5955,
+          5955,
+          5955,
+          5955,
+          5955,
+          5955
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.8388698745050667,
+          1.0
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/walk2_subject1_full_clean.json",
+        "report_sha256": "1024386b88aaefc83492a8fa5da2538a45c098ebfc5df131ce1581b1691a74e9"
+      },
+      "random_perturbed_10s": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/walk2_subject1.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-42-05_walk2_subject1_default/model_29999.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-42-05_walk2_subject1_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-42-05_walk2_subject1_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "400",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/walk2_subject1_random_perturbed_10s.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test",
+          "--start_phase",
+          "random",
+          "--perturbed",
+          "--evaluation_steps",
+          "250"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/walk2_subject1_random_perturbed_10s.log",
+        "successes": 20,
+        "trials": 20,
+        "success_rate": 1.0,
+        "passed_g1": false,
+        "body_error_mean_m": 0.04201766476035118,
+        "trial_ticks": [
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.8388698745050667,
+          1.0
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/walk2_subject1_random_perturbed_10s.json",
+        "report_sha256": "0c34e0b9806b677c7256a4a4d3f0f25f79da4867f60dc96103c9d7f1c0112570"
+      },
+      "recommendation": "推荐进入正式teacher库"
+    },
+    {
+      "motion_id": "run1_subject2",
+      "motion_file": "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/run1_subject2.npz",
+      "motion_sha256": "a3bf80d8e40116617772fee457fc5fb377c886d16447521ca81e7c5ae146e597",
+      "motion_frames": 5945,
+      "duration_s": 237.8,
+      "checkpoint": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-43-07_run1_subject2_default/model_29999.pt",
+      "iteration": 29999,
+      "agent_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-43-07_run1_subject2_default/params/agent.yaml",
+      "env_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-43-07_run1_subject2_default/params/env.yaml",
+      "env_yaml_sha256": "3356885ba0be9b3a06b31f7a3d845e0b4f3c826fe6dcf82be06c88d7d2c4b365",
+      "teacher": {
+        "checkpoint_sha256": "b711eab62fc9378193ee6ed8e45d70d95def6745f20dcb558cd0272cf4d1f5d4",
+        "agent_sha256": "588cc47d4f8f8f500d64d524740dbc6a03b5d6d1f28985686633561907da43c2",
+        "empirical_normalization": true,
+        "normalizer_eps": 0.01,
+        "actor_hidden_dims": [
+          512,
+          256,
+          128
+        ],
+        "label": "actor_mean"
+      },
+      "full_clean": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/run1_subject2.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-43-07_run1_subject2_default/model_29999.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-43-07_run1_subject2_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-43-07_run1_subject2_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "300",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/run1_subject2_full_clean.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/run1_subject2_full_clean.log",
+        "successes": 18,
+        "trials": 20,
+        "success_rate": 0.9,
+        "passed_g1": false,
+        "body_error_mean_m": 0.03771970793604851,
+        "trial_ticks": [
+          4864,
+          5945,
+          5945,
+          5945,
+          5945,
+          5945,
+          5945,
+          5945,
+          5945,
+          5945,
+          5945,
+          5945,
+          1820,
+          5945,
+          5945,
+          5945,
+          5945,
+          5945,
+          5945,
+          5945
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.6989617935882066,
+          0.9721341060158468
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/run1_subject2_full_clean.json",
+        "report_sha256": "fb47a200aaacaabf803a9fcf930a45810ca19fb25f7e4b8cfc18e2d0b314e19b"
+      },
+      "random_perturbed_10s": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/run1_subject2.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-43-07_run1_subject2_default/model_29999.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-43-07_run1_subject2_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-43-07_run1_subject2_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "400",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/run1_subject2_random_perturbed_10s.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test",
+          "--start_phase",
+          "random",
+          "--perturbed",
+          "--evaluation_steps",
+          "250"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/run1_subject2_random_perturbed_10s.log",
+        "successes": 20,
+        "trials": 20,
+        "success_rate": 1.0,
+        "passed_g1": false,
+        "body_error_mean_m": 0.040149539709091187,
+        "trial_ticks": [
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.8388698745050667,
+          1.0
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/run1_subject2_random_perturbed_10s.json",
+        "report_sha256": "0734f4a8877167671db3c7349e5e20365069e8598ed00dc468da3194dfefa3cf"
+      },
+      "recommendation": "完整动作未合格；可筛选片段后重新验收"
+    },
+    {
+      "motion_id": "dance1_subject1",
+      "motion_file": "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/dance1_subject1.npz",
+      "motion_sha256": "7388f038aee8b27c2a183f10fbf34103afd369b0b5a3857705605290761222b8",
+      "motion_frames": 3287,
+      "duration_s": 131.48,
+      "checkpoint": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-44-46_dance1_subject1_default/model_29999.pt",
+      "iteration": 29999,
+      "agent_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-44-46_dance1_subject1_default/params/agent.yaml",
+      "env_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-44-46_dance1_subject1_default/params/env.yaml",
+      "env_yaml_sha256": "b7ba6941c2e5fa02268f948624eb87e2a1fe3525fff42bbcaefc4d7f1e9b1138",
+      "teacher": {
+        "checkpoint_sha256": "ccfef0013afdc80aaddd9297bc4d66097b689316ce4ac5502041dafa6ea0a133",
+        "agent_sha256": "423e8c8166d667ae7d5c73e0f488ff4cffc9574fddc2f4e031b19cd3fb6e083e",
+        "empirical_normalization": true,
+        "normalizer_eps": 0.01,
+        "actor_hidden_dims": [
+          512,
+          256,
+          128
+        ],
+        "label": "actor_mean"
+      },
+      "full_clean": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/dance1_subject1.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-44-46_dance1_subject1_default/model_29999.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-44-46_dance1_subject1_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-44-46_dance1_subject1_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "300",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/dance1_subject1_full_clean.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/dance1_subject1_full_clean.log",
+        "successes": 20,
+        "trials": 20,
+        "success_rate": 1.0,
+        "passed_g1": true,
+        "body_error_mean_m": 0.045378681272268295,
+        "trial_ticks": [
+          3287,
+          3287,
+          3287,
+          3287,
+          3287,
+          3287,
+          3287,
+          3287,
+          3287,
+          3287,
+          3287,
+          3287,
+          3287,
+          3287,
+          3287,
+          3287,
+          3287,
+          3287,
+          3287,
+          3287
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.8388698745050667,
+          1.0
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/dance1_subject1_full_clean.json",
+        "report_sha256": "fcb1b2b9b8b755793c2fa99dd389c4f2f5012864e6134e78a7dc94eaff2f675d"
+      },
+      "random_perturbed_10s": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/dance1_subject1.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-44-46_dance1_subject1_default/model_29999.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-44-46_dance1_subject1_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_15-44-46_dance1_subject1_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "400",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/dance1_subject1_random_perturbed_10s.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test",
+          "--start_phase",
+          "random",
+          "--perturbed",
+          "--evaluation_steps",
+          "250"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/dance1_subject1_random_perturbed_10s.log",
+        "successes": 19,
+        "trials": 20,
+        "success_rate": 0.95,
+        "passed_g1": false,
+        "body_error_mean_m": 0.049304693937301636,
+        "trial_ticks": [
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          201,
+          250,
+          250,
+          250,
+          250,
+          250
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.7638641064874331,
+          0.9911187805671268
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/dance1_subject1_random_perturbed_10s.json",
+        "report_sha256": "2fc927fabc45c9513c9ba9a8bce595a478684da78e1470e7ee295f7e039a2b65"
+      },
+      "recommendation": "推荐进入正式teacher库"
+    },
+    {
+      "motion_id": "sprint1_subject2",
+      "motion_file": "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/sprint1_subject2.npz",
+      "motion_sha256": "92c6e763295b57a5fe5ab8c44b53ef7585a2273480f0dd969ecf4f10286c51db",
+      "motion_frames": 6828,
+      "duration_s": 273.12,
+      "checkpoint": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-14-39_sprint1_subject2_default/model_29999.pt",
+      "iteration": 29999,
+      "agent_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-14-39_sprint1_subject2_default/params/agent.yaml",
+      "env_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-14-39_sprint1_subject2_default/params/env.yaml",
+      "env_yaml_sha256": "f31029e3a66107855e2d2111b862ae5e67faf875ea7f7b77e49e408b805ab75a",
+      "teacher": {
+        "checkpoint_sha256": "47722a237ace0219bac63f8bf64c0bada64b15cfe432ad72b8e77bd143216dfe",
+        "agent_sha256": "67d7b5ee7a7dc0e7a9c8ca1e02503e7b809f64cf7511629948ccf680bff06c0a",
+        "empirical_normalization": true,
+        "normalizer_eps": 0.01,
+        "actor_hidden_dims": [
+          512,
+          256,
+          128
+        ],
+        "label": "actor_mean"
+      },
+      "full_clean": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/sprint1_subject2.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-14-39_sprint1_subject2_default/model_29999.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-14-39_sprint1_subject2_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-14-39_sprint1_subject2_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "300",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/sprint1_subject2_full_clean.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/sprint1_subject2_full_clean.log",
+        "successes": 18,
+        "trials": 20,
+        "success_rate": 0.9,
+        "passed_g1": false,
+        "body_error_mean_m": 0.03714367374777794,
+        "trial_ticks": [
+          543,
+          6828,
+          6828,
+          6828,
+          6828,
+          6828,
+          6828,
+          6828,
+          6828,
+          6828,
+          6828,
+          6828,
+          6828,
+          6828,
+          6828,
+          6828,
+          4526,
+          6828,
+          6828,
+          6828
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.6989617935882066,
+          0.9721341060158468
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/sprint1_subject2_full_clean.json",
+        "report_sha256": "2b4803795b962c07eb73beefd6e1b839f3b3ae4aab595e5701c0340c629eec9c"
+      },
+      "random_perturbed_10s": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/sprint1_subject2.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-14-39_sprint1_subject2_default/model_29999.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-14-39_sprint1_subject2_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-14-39_sprint1_subject2_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "400",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/sprint1_subject2_random_perturbed_10s.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test",
+          "--start_phase",
+          "random",
+          "--perturbed",
+          "--evaluation_steps",
+          "250"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/sprint1_subject2_random_perturbed_10s.log",
+        "successes": 19,
+        "trials": 20,
+        "success_rate": 0.95,
+        "passed_g1": false,
+        "body_error_mean_m": 0.049705445766448975,
+        "trial_ticks": [
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          24,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.7638641064874331,
+          0.9911187805671268
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/sprint1_subject2_random_perturbed_10s.json",
+        "report_sha256": "642e5cb9498fed2f1e5e8a71d9839b85936bbc8778e689cf8f360f8f8168db34"
+      },
+      "recommendation": "完整动作未合格；可筛选片段后重新验收"
+    },
+    {
+      "motion_id": "jumps1_subject1",
+      "motion_file": "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/jumps1_subject1.npz",
+      "motion_sha256": "cdddc4fc039ac5ea91997d282be530c7f9284917e9b36cf439d478bde977914a",
+      "motion_frames": 6111,
+      "duration_s": 244.44,
+      "checkpoint": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-15-06_jumps1_subject1_default/model_29999.pt",
+      "iteration": 29999,
+      "agent_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-15-06_jumps1_subject1_default/params/agent.yaml",
+      "env_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-15-06_jumps1_subject1_default/params/env.yaml",
+      "env_yaml_sha256": "9d18e233fca6d17cc59750d4b5e927b22f9e50f44f1be2d809df551eea695f45",
+      "teacher": {
+        "checkpoint_sha256": "5752ba32ea5a0f76b5d79e70202ed7f13623f0e9f3fba0de440fa9051ccba881",
+        "agent_sha256": "e023d6cf9ab6bf0fd7296864dbbea712b174f707fbe00c025e8406e6a71bfa97",
+        "empirical_normalization": true,
+        "normalizer_eps": 0.01,
+        "actor_hidden_dims": [
+          512,
+          256,
+          128
+        ],
+        "label": "actor_mean"
+      },
+      "full_clean": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/jumps1_subject1.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-15-06_jumps1_subject1_default/model_29999.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-15-06_jumps1_subject1_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-15-06_jumps1_subject1_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "300",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/jumps1_subject1_full_clean.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/jumps1_subject1_full_clean.log",
+        "successes": 20,
+        "trials": 20,
+        "success_rate": 1.0,
+        "passed_g1": true,
+        "body_error_mean_m": 0.04085294529795647,
+        "trial_ticks": [
+          6111,
+          6111,
+          6111,
+          6111,
+          6111,
+          6111,
+          6111,
+          6111,
+          6111,
+          6111,
+          6111,
+          6111,
+          6111,
+          6111,
+          6111,
+          6111,
+          6111,
+          6111,
+          6111,
+          6111
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.8388698745050667,
+          1.0
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/jumps1_subject1_full_clean.json",
+        "report_sha256": "13d3f6b4ae498c3fcb3e4f29f3182512902cd11fe3294fc13003775097da9b75"
+      },
+      "random_perturbed_10s": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/jumps1_subject1.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-15-06_jumps1_subject1_default/model_29999.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-15-06_jumps1_subject1_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-15-06_jumps1_subject1_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "400",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/jumps1_subject1_random_perturbed_10s.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test",
+          "--start_phase",
+          "random",
+          "--perturbed",
+          "--evaluation_steps",
+          "250"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/jumps1_subject1_random_perturbed_10s.log",
+        "successes": 20,
+        "trials": 20,
+        "success_rate": 1.0,
+        "passed_g1": false,
+        "body_error_mean_m": 0.04310385510325432,
+        "trial_ticks": [
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.8388698745050667,
+          1.0
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/jumps1_subject1_random_perturbed_10s.json",
+        "report_sha256": "025577059dd2f963a74933084986dd7de3feffff1adb8c9fb0b5f34af7c52c96"
+      },
+      "recommendation": "推荐进入正式teacher库"
+    },
+    {
+      "motion_id": "fight1_subject2",
+      "motion_file": "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/fight1_subject2.npz",
+      "motion_sha256": "526b3c1d00e75c4920d363b1db44ffc93911edb929e5a6d6096c00c1ca60757b",
+      "motion_frames": 6122,
+      "duration_s": 244.88,
+      "checkpoint": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-15-39_fight1_subject2_default/model_29999.pt",
+      "iteration": 29999,
+      "agent_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-15-39_fight1_subject2_default/params/agent.yaml",
+      "env_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-15-39_fight1_subject2_default/params/env.yaml",
+      "env_yaml_sha256": "dd1939e775c738c69bae78881627cffe76bd009e73002672daad6654c2954ab4",
+      "teacher": {
+        "checkpoint_sha256": "9b468b93595170595710bfa0995d3d744ed5bea61ee38824fa56e2791d73cd27",
+        "agent_sha256": "1659d5185bd0fb1966fe1f723c74330813632b1c92bc1df0d5fb490196acf5e1",
+        "empirical_normalization": true,
+        "normalizer_eps": 0.01,
+        "actor_hidden_dims": [
+          512,
+          256,
+          128
+        ],
+        "label": "actor_mean"
+      },
+      "full_clean": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/fight1_subject2.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-15-39_fight1_subject2_default/model_29999.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-15-39_fight1_subject2_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-15-39_fight1_subject2_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "300",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fight1_subject2_full_clean.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fight1_subject2_full_clean.log",
+        "successes": 20,
+        "trials": 20,
+        "success_rate": 1.0,
+        "passed_g1": true,
+        "body_error_mean_m": 0.04706044867634773,
+        "trial_ticks": [
+          6122,
+          6122,
+          6122,
+          6122,
+          6122,
+          6122,
+          6122,
+          6122,
+          6122,
+          6122,
+          6122,
+          6122,
+          6122,
+          6122,
+          6122,
+          6122,
+          6122,
+          6122,
+          6122,
+          6122
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.8388698745050667,
+          1.0
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fight1_subject2_full_clean.json",
+        "report_sha256": "1b70929d821dc7016a819d157d1d4653cd8a648720d011b99ffa5c68980633ae"
+      },
+      "random_perturbed_10s": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/fight1_subject2.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-15-39_fight1_subject2_default/model_29999.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-15-39_fight1_subject2_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-15-39_fight1_subject2_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "400",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fight1_subject2_random_perturbed_10s.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test",
+          "--start_phase",
+          "random",
+          "--perturbed",
+          "--evaluation_steps",
+          "250"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fight1_subject2_random_perturbed_10s.log",
+        "successes": 19,
+        "trials": 20,
+        "success_rate": 0.95,
+        "passed_g1": false,
+        "body_error_mean_m": 0.055929552763700485,
+        "trial_ticks": [
+          250,
+          250,
+          250,
+          250,
+          14,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.7638641064874331,
+          0.9911187805671268
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fight1_subject2_random_perturbed_10s.json",
+        "report_sha256": "336f1cd1b1d356dbb41ddad1b72466f21d2175d7d3f374871753fc778c833d13"
+      },
+      "recommendation": "推荐进入正式teacher库"
+    },
+    {
+      "motion_id": "fightAndSports1_subject1",
+      "motion_file": "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/fightAndSports1_subject1.npz",
+      "motion_sha256": "6c0c68224c5df6e702796e506ab438938ae50a8d3c1f2295e2c5b8eb7232b5be",
+      "motion_frames": 6129,
+      "duration_s": 245.16,
+      "checkpoint": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-18-04_fightAndSports1_subject1_default/model_29999.pt",
+      "iteration": 29999,
+      "agent_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-18-04_fightAndSports1_subject1_default/params/agent.yaml",
+      "env_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-18-04_fightAndSports1_subject1_default/params/env.yaml",
+      "env_yaml_sha256": "af5a9b9f20c8be5b97a67c85bf77eee4e015e5ee1f96d813d4a53ac4fa93f856",
+      "teacher": {
+        "checkpoint_sha256": "e5a694525f84b071ad5f9537fd40d1c89a7238bf3e5d4b8f2d5f3754f1fcfe22",
+        "agent_sha256": "27d988917fb7dae8e60262bad7ca4e54ee34a970b6e217e6c7d1b9e96ce411c3",
+        "empirical_normalization": true,
+        "normalizer_eps": 0.01,
+        "actor_hidden_dims": [
+          512,
+          256,
+          128
+        ],
+        "label": "actor_mean"
+      },
+      "full_clean": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/fightAndSports1_subject1.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-18-04_fightAndSports1_subject1_default/model_29999.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-18-04_fightAndSports1_subject1_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-18-04_fightAndSports1_subject1_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "300",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fightAndSports1_subject1_full_clean.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fightAndSports1_subject1_full_clean.log",
+        "successes": 18,
+        "trials": 20,
+        "success_rate": 0.9,
+        "passed_g1": false,
+        "body_error_mean_m": 0.051273711025714874,
+        "trial_ticks": [
+          6129,
+          6129,
+          6129,
+          6129,
+          6129,
+          6129,
+          6129,
+          115,
+          6129,
+          6129,
+          116,
+          6129,
+          6129,
+          6129,
+          6129,
+          6129,
+          6129,
+          6129,
+          6129,
+          6129
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.6989617935882066,
+          0.9721341060158468
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fightAndSports1_subject1_full_clean.json",
+        "report_sha256": "21442eb12f96730ce6459d579f0511cb0953874a14dbda15e571ba43a92cf484"
+      },
+      "random_perturbed_10s": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/fightAndSports1_subject1.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-18-04_fightAndSports1_subject1_default/model_29999.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-18-04_fightAndSports1_subject1_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_16-18-04_fightAndSports1_subject1_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "400",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fightAndSports1_subject1_random_perturbed_10s.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test",
+          "--start_phase",
+          "random",
+          "--perturbed",
+          "--evaluation_steps",
+          "250"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fightAndSports1_subject1_random_perturbed_10s.log",
+        "successes": 20,
+        "trials": 20,
+        "success_rate": 1.0,
+        "passed_g1": false,
+        "body_error_mean_m": 0.05299902707338333,
+        "trial_ticks": [
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.8388698745050667,
+          1.0
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fightAndSports1_subject1_random_perturbed_10s.json",
+        "report_sha256": "ba1801ff528baf0aac42a0637bae78ab1033c449b37defecdb44a60ca8c26796"
+      },
+      "recommendation": "完整动作未合格；可筛选片段后重新验收"
+    },
+    {
+      "motion_id": "dance2_subject1",
+      "motion_file": "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/dance2_subject1.npz",
+      "motion_sha256": "1d0d5656f278fdcdc89270ca381307de0f743b865e006df191767dc250722fb2",
+      "motion_frames": 5642,
+      "duration_s": 225.68,
+      "checkpoint": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_17-47-40_dance2_subject1_default/model_29999.pt",
+      "iteration": 29999,
+      "agent_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_17-47-40_dance2_subject1_default/params/agent.yaml",
+      "env_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_17-47-40_dance2_subject1_default/params/env.yaml",
+      "env_yaml_sha256": "5820989be68e0e1122e5cb41d6976649c2d10ea3013c915200176196801b9c52",
+      "teacher": {
+        "checkpoint_sha256": "c99730a4faee471bb06644e6223e6b00aec8b97f815fe5ebbcf27ecc46f37cd2",
+        "agent_sha256": "1bda2cebc6648a1a314c24a39e8e5b6ef4ae5ffd715e084df6854a5a72a9b79c",
+        "empirical_normalization": true,
+        "normalizer_eps": 0.01,
+        "actor_hidden_dims": [
+          512,
+          256,
+          128
+        ],
+        "label": "actor_mean"
+      },
+      "full_clean": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/dance2_subject1.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_17-47-40_dance2_subject1_default/model_29999.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_17-47-40_dance2_subject1_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_17-47-40_dance2_subject1_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "300",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/dance2_subject1_full_clean.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/dance2_subject1_full_clean.log",
+        "successes": 0,
+        "trials": 20,
+        "success_rate": 0.0,
+        "passed_g1": false,
+        "body_error_mean_m": 0.05575520917773247,
+        "trial_ticks": [
+          4849,
+          4848,
+          4849,
+          4848,
+          4849,
+          4849,
+          4849,
+          4848,
+          4848,
+          4849,
+          4849,
+          4849,
+          4849,
+          4849,
+          4848,
+          4849,
+          4849,
+          4849,
+          4849,
+          4849
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            true,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ]
+        ],
+        "wilson95": [
+          0.0,
+          0.16113012549493322
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/dance2_subject1_full_clean.json",
+        "report_sha256": "5a4f087b148954073090027b8e87e6c9b4ad3b65a98d41cd21acd35441059615"
+      },
+      "random_perturbed_10s": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/dance2_subject1.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_17-47-40_dance2_subject1_default/model_29999.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_17-47-40_dance2_subject1_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_17-47-40_dance2_subject1_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "400",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/dance2_subject1_random_perturbed_10s.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test",
+          "--start_phase",
+          "random",
+          "--perturbed",
+          "--evaluation_steps",
+          "250"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/dance2_subject1_random_perturbed_10s.log",
+        "successes": 19,
+        "trials": 20,
+        "success_rate": 0.95,
+        "passed_g1": false,
+        "body_error_mean_m": 0.055097829550504684,
+        "trial_ticks": [
+          250,
+          250,
+          250,
+          250,
+          65,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.7638641064874331,
+          0.9911187805671268
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/dance2_subject1_random_perturbed_10s.json",
+        "report_sha256": "98725b6240954a0948b56eca951bc67e161ee1ffdec5cd4704f237a098ecbd00"
+      },
+      "recommendation": "完整动作未合格；可筛选片段后重新验收"
+    },
+    {
+      "motion_id": "fallAndGetUp1_subject1",
+      "motion_file": "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/fallAndGetUp1_subject1.npz",
+      "motion_sha256": "c269feb5b416ece0887f21c4aaacd648fcb16e065b474620f8f4df5a73979a85",
+      "motion_frames": 4205,
+      "duration_s": 168.2,
+      "checkpoint": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_19-47-43_fallAndGetUp1_subject1_default/model_20000.pt",
+      "iteration": 20000,
+      "agent_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_19-47-43_fallAndGetUp1_subject1_default/params/agent.yaml",
+      "env_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_19-47-43_fallAndGetUp1_subject1_default/params/env.yaml",
+      "env_yaml_sha256": "65a9f56087028f57cf161f2cad6df4564e0aa3bac499ff9c0463a2abde1e68ba",
+      "teacher": {
+        "checkpoint_sha256": "d3a7a49b50cdf97393db35fea0f66d565a4e46ed6df27aec2637792eb796422a",
+        "agent_sha256": "cce03140f0c6ad306c1ef44706cb07aacc2c5d7bb61c5c2ef59ad75e50f83997",
+        "empirical_normalization": true,
+        "normalizer_eps": 0.01,
+        "actor_hidden_dims": [
+          512,
+          256,
+          128
+        ],
+        "label": "actor_mean"
+      },
+      "full_clean": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/fallAndGetUp1_subject1.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_19-47-43_fallAndGetUp1_subject1_default/model_20000.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_19-47-43_fallAndGetUp1_subject1_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_19-47-43_fallAndGetUp1_subject1_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "300",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fallAndGetUp1_subject1_full_clean.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fallAndGetUp1_subject1_full_clean.log",
+        "successes": 16,
+        "trials": 20,
+        "success_rate": 0.8,
+        "passed_g1": false,
+        "body_error_mean_m": 0.05831066519021988,
+        "trial_ticks": [
+          159,
+          4205,
+          4205,
+          4205,
+          142,
+          4205,
+          4205,
+          53,
+          4205,
+          4205,
+          4205,
+          4205,
+          4205,
+          4205,
+          270,
+          4205,
+          4205,
+          4205,
+          4205,
+          4205
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.5839782779742401,
+          0.9193436467288
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fallAndGetUp1_subject1_full_clean.json",
+        "report_sha256": "0286a7eec219802540d631dfbb49b02040f6bd72749c1c351a253583bdee536a"
+      },
+      "random_perturbed_10s": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/fallAndGetUp1_subject1.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_19-47-43_fallAndGetUp1_subject1_default/model_20000.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_19-47-43_fallAndGetUp1_subject1_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-01_19-47-43_fallAndGetUp1_subject1_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "400",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fallAndGetUp1_subject1_random_perturbed_10s.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test",
+          "--start_phase",
+          "random",
+          "--perturbed",
+          "--evaluation_steps",
+          "250"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fallAndGetUp1_subject1_random_perturbed_10s.log",
+        "successes": 20,
+        "trials": 20,
+        "success_rate": 1.0,
+        "passed_g1": false,
+        "body_error_mean_m": 0.05450974777340889,
+        "trial_ticks": [
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250,
+          250
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.8388698745050667,
+          1.0
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fallAndGetUp1_subject1_random_perturbed_10s.json",
+        "report_sha256": "b0d88be791c2026d061924d5c018a35b3f67fd8e90099ea3fecfc384cfd7a779"
+      },
+      "recommendation": "完整动作未合格；可筛选片段后重新验收"
+    },
+    {
+      "motion_id": "fallAndGetUp2_subject2",
+      "motion_file": "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/fallAndGetUp2_subject2.npz",
+      "motion_sha256": "ec24991635d8ec3006a44568ec5471eec63064e96495ab60720c75e5afc38acf",
+      "motion_frames": 4098,
+      "duration_s": 163.92,
+      "checkpoint": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-02_02-38-39_fallAndGetUp2_subject2_default/model_16500.pt",
+      "iteration": 16500,
+      "agent_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-02_02-38-39_fallAndGetUp2_subject2_default/params/agent.yaml",
+      "env_yaml": "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-02_02-38-39_fallAndGetUp2_subject2_default/params/env.yaml",
+      "env_yaml_sha256": "e2385fc8ab63bc92f9cdcab01da2c4e6fda4c4128627e07b25b29a833f3589d4",
+      "teacher": {
+        "checkpoint_sha256": "2403b85818d2718d7b4cd0365f6ebc7f85f4afb9a53cc22c1a2054394b17b4f8",
+        "agent_sha256": "17c749688431a540483cdd621f234d6d42378293b3fe50a7352a542ea2946184",
+        "empirical_normalization": true,
+        "normalizer_eps": 0.01,
+        "actor_hidden_dims": [
+          512,
+          256,
+          128
+        ],
+        "label": "actor_mean"
+      },
+      "full_clean": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/fallAndGetUp2_subject2.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-02_02-38-39_fallAndGetUp2_subject2_default/model_16500.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-02_02-38-39_fallAndGetUp2_subject2_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-02_02-38-39_fallAndGetUp2_subject2_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "300",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fallAndGetUp2_subject2_full_clean.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fallAndGetUp2_subject2_full_clean.log",
+        "successes": 0,
+        "trials": 20,
+        "success_rate": 0.0,
+        "passed_g1": false,
+        "body_error_mean_m": 0.060434818267822266,
+        "trial_ticks": [
+          3559,
+          3559,
+          3559,
+          3559,
+          3559,
+          3558,
+          858,
+          3559,
+          3559,
+          3559,
+          3559,
+          3558,
+          3559,
+          3558,
+          3558,
+          3559,
+          3559,
+          3559,
+          3559,
+          3376
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            true,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            true,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ]
+        ],
+        "wilson95": [
+          0.0,
+          0.16113012549493322
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fallAndGetUp2_subject2_full_clean.json",
+        "report_sha256": "0606cc23ba54048985976218a8cffbdb9460de356f53ef16cff870ce9eb6ebe3"
+      },
+      "random_perturbed_10s": {
+        "status": "complete",
+        "command": [
+          "/home/user/Desktop/whole_body_tracking/.venv/bin/python",
+          "-u",
+          "/home/user/Desktop/whole_body_tracking/scripts/stage2/rollout.py",
+          "--mode",
+          "evaluate",
+          "--motion_file",
+          "/home/user/Desktop/whole_body_tracking/data/reproduction/motions_25hz/fallAndGetUp2_subject2.npz",
+          "--teacher_checkpoint",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-02_02-38-39_fallAndGetUp2_subject2_default/model_16500.pt",
+          "--agent_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-02_02-38-39_fallAndGetUp2_subject2_default/params/agent.yaml",
+          "--env_yaml",
+          "/home/user/Desktop/whole_body_tracking/logs/rsl_rl/g1_flat/2026-10-02_02-38-39_fallAndGetUp2_subject2_default/params/env.yaml",
+          "--num_envs",
+          "20",
+          "--seed",
+          "400",
+          "--device",
+          "cuda:0",
+          "--output",
+          "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fallAndGetUp2_subject2_random_perturbed_10s.json",
+          "--headless",
+          "--fast_exit",
+          "--split",
+          "test",
+          "--start_phase",
+          "random",
+          "--perturbed",
+          "--evaluation_steps",
+          "250"
+        ],
+        "log": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fallAndGetUp2_subject2_random_perturbed_10s.log",
+        "successes": 13,
+        "trials": 20,
+        "success_rate": 0.65,
+        "passed_g1": false,
+        "body_error_mean_m": 0.06892412155866623,
+        "trial_ticks": [
+          210,
+          250,
+          250,
+          250,
+          250,
+          250,
+          16,
+          250,
+          184,
+          250,
+          227,
+          250,
+          250,
+          29,
+          250,
+          211,
+          159,
+          250,
+          250,
+          250
+        ],
+        "termination_terms": [
+          "time_out",
+          "anchor_pos",
+          "anchor_ori",
+          "ee_body_pos"
+        ],
+        "termination_reasons": [
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            true,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            true
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ],
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wilson95": [
+          0.43285051021946463,
+          0.8188104521320554
+        ],
+        "report": "/home/user/Desktop/whole_body_tracking/artifacts/teacher_evaluation/2026-10-02_0946/fallAndGetUp2_subject2_random_perturbed_10s.json",
+        "report_sha256": "c315dd2ff1157d4e66c13ee868bf3ab4f9c0a297d07a806f37862573e7b3bf3f"
+      },
+      "recommendation": "当前不推荐进入正式teacher库"
+    }
+  ],
+  "complete": true,
+  "finished_at": "2026-10-02T10:26:08.890255+08:00"
+}
